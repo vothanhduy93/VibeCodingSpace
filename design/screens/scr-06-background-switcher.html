@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VibeSpace - Aesthetic Background &amp; Filter Switcher</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;family=Public+Sans:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-tertiary": "#003824",
+            "on-secondary-fixed": "#001f26",
+            "secondary-container": "#03b5d3",
+            "secondary": "#4cd7f6",
+            "on-secondary-fixed-variant": "#004e5c",
+            "surface-container-highest": "#313540",
+            "surface-container": "#1c1f2a",
+            "surface-dim": "#0f131d",
+            "on-primary-fixed": "#2c0051",
+            "surface-tint": "#ddb7ff",
+            "on-error-container": "#ffdad6",
+            "tertiary-fixed": "#6ffbbe",
+            "inverse-on-surface": "#2c303b",
+            "surface-container-high": "#262a35",
+            "on-tertiary-container": "#00311f",
+            "on-secondary": "#003640",
+            "on-background": "#dfe2f1",
+            "error-container": "#93000a",
+            "secondary-fixed": "#acedff",
+            "primary-fixed-dim": "#ddb7ff",
+            "surface": "#0f131d",
+            "tertiary": "#4edea3",
+            "on-tertiary-fixed": "#002113",
+            "error": "#ffb4ab",
+            "background": "#0f131d",
+            "tertiary-container": "#00a572",
+            "on-surface": "#dfe2f1",
+            "on-secondary-container": "#00424e",
+            "on-surface-variant": "#cfc2d6",
+            "outline-variant": "#4d4354",
+            "on-tertiary-fixed-variant": "#005236",
+            "primary": "#ddb7ff",
+            "on-primary": "#490080",
+            "surface-variant": "#313540",
+            "surface-container-lowest": "#0a0e18",
+            "surface-container-low": "#171b26",
+            "surface-bright": "#353944",
+            "primary-fixed": "#f0dbff",
+            "primary-container": "#b76dff",
+            "on-primary-fixed-variant": "#6900b3",
+            "outline": "#988d9f",
+            "secondary-fixed-dim": "#4cd7f6",
+            "on-primary-container": "#400071",
+            "inverse-surface": "#dfe2f1",
+            "tertiary-fixed-dim": "#4edea3",
+            "on-error": "#690005",
+            "inverse-primary": "#842bd2"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          fontFamily: {
+            "headline": ["Plus Jakarta Sans", "sans-serif"],
+            "display": ["Plus Jakarta Sans", "sans-serif"],
+            "body": ["Inter", "sans-serif"],
+            "label": ["Public Sans", "sans-serif"],
+            "mono": ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(15, 19, 29, 0.2);
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(221, 183, 255, 0.2);
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(221, 183, 255, 0.4);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body antialiased min-h-screen overflow-hidden relative select-none">
+<!-- Deep Moody Pine Forest Background with Subtle Dimming & Blur -->
+<div class="fixed inset-0 z-0 bg-cover bg-center transition-all duration-700 scale-105" style="background-image: url('https://lh3.googleusercontent.com/aida/AEtjO1XgPVt_FPb9IMnj_kI8XEpRwb6Y4N8ozFZYBlCVLhRmw_Y99M_7Ux2FiQdmqFdnR45sn4xfmvYlQYFEgie_fnJ9k_4zL5W3kSN4ZFqhaEL6o5zMmBchhcUk0imYLAtBtc5p4oqDqNYNahEZLELqFn3xEU2V1LcRj1bzyHEDeUx3RYPc14kKqP9tazRYQ2d0rIp9eotREy3wOAj4zwsMMAKkw3Ii_SrThWywdKaYZ_-E1f06LLp1UGq87Fs'); filter: blur(3px) brightness(0.65);"></div>
+<div class="fixed inset-0 z-0 bg-gradient-to-b from-surface-container-lowest/70 via-background/40 to-surface-container-lowest/80 pointer-events-none"></div>
+<!-- Shared TopNavBar Component -->
+<header class="fixed top-0 left-0 w-full z-40 border-b border-outline-variant/30 bg-surface-container-lowest/60 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center w-full px-6 py-3 max-w-7xl mx-auto">
+<!-- Left: Brand Logo & Desktop Navigation Links -->
+<div class="flex items-center gap-8">
+<a class="font-headline text-lg font-bold tracking-wider text-primary flex items-center gap-2" href="#">
+<span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse shadow-[0_0_12px_#ddb7ff]"></span>
+          VibeSpace
+        </a>
+<nav class="hidden md:flex items-center gap-6 font-headline text-sm text-on-surface">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary active:scale-95 transition-transform duration-150" href="#">Focus</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary active:scale-95 transition-transform duration-150" href="#">Sounds</a>
+<a class="text-primary font-semibold border-b-2 border-primary pb-1 active:scale-95 transition-transform duration-150" href="#">Spaces</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary active:scale-95 transition-transform duration-150" href="#">Analytics</a>
+</nav>
+</div>
+<!-- Center: Serene Atmosphere Clock & Status -->
+<div class="hidden lg:flex items-center gap-3 px-4 py-1.5 rounded-full bg-surface-container-low/40 border border-outline-variant/30 backdrop-blur-sm text-xs font-mono text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-ping"></span>
+<span class="text-on-surface font-semibold">05:30</span>
+<span class="text-outline">|</span>
+<span>Thursday, Sep 17</span>
+<span class="text-outline">|</span>
+<span class="text-secondary flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">cloud_queue</span> 14°C Calm Mist</span>
+</div>
+<!-- Right: Action cluster -->
+<div class="flex items-center gap-3">
+<!-- Trailing Icon Actions -->
+<button class="w-9 h-9 flex items-center justify-center rounded-full bg-surface-container/40 border border-outline-variant/30 text-on-surface-variant hover:text-primary active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm">schedule</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-full bg-surface-container/40 border border-outline-variant/30 text-on-surface-variant hover:text-primary active:scale-95 transition-all relative">
+<span class="material-symbols-outlined text-sm">notifications</span>
+<span class="absolute top-2 right-2 w-1.5 h-1.5 bg-primary rounded-full"></span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-full bg-surface-container/40 border border-outline-variant/30 text-on-surface-variant hover:text-primary active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm">settings</span>
+</button>
+<!-- Trailing Primary Action -->
+<button class="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-primary-container text-on-primary-container font-headline text-xs font-semibold hover:bg-primary hover:text-on-primary active:scale-95 shadow-lg shadow-primary-container/20 transition-all">
+<span class="material-symbols-outlined text-[16px]">self_improvement</span>
+          Zen Mode
+        </button>
+<!-- User Profile Avatar -->
+<div class="w-8 h-8 rounded-full ring-1 ring-outline-variant/50 overflow-hidden ml-1">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="Minimal aesthetic anime style avatar portrait of a creative professional wearing headphones with glowing violet highlights in deep dark tone." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIsDjn6eujt376V98E7OLg4201C2HLJjxHYmCoWssH1CWZKCpAJwcbQ8qomCLFH86ciizEhcIrXCYo_0bvetJQWRWkQ1mMu3MJC89dD90rZrHvaC7tpuAngD8tzJIWvS17i84EiMRITBVw0vE250P_6tvS-rGffEK_09hUSYHfha3WT-_6q1PiZUsJ-_0uwKQh2txc76krxH2FMEeNNDe0U9-CVMARgpkEqW76I0WwATS1hKgaBXXfs9bMuGc5qgDtZA6imP0KO5Q"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Ambient Workspace Canvas Area (Background blurred Pomodoro counter card) -->
+<main class="fixed inset-0 z-10 flex items-center justify-start pl-16 pointer-events-none">
+<div class="hidden xl:flex flex-col items-start gap-4 p-8 rounded-3xl bg-surface-container-lowest/40 backdrop-blur-md border border-outline-variant/20 max-w-sm">
+<div class="flex items-center justify-between w-full">
+<span class="text-xs uppercase tracking-widest text-primary font-mono font-medium">Deep Work Session</span>
+<span class="px-2 py-0.5 text-[10px] font-mono text-tertiary bg-tertiary-container/20 rounded-full border border-tertiary/30">Focusing</span>
+</div>
+<div class="font-headline text-6xl font-bold tracking-tighter text-on-surface">24:18</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">Pine Valley Mist soundscape active with natural rain drizzle at 32% volume.</p>
+<div class="flex items-center gap-2 pt-2 w-full">
+<div class="h-1.5 flex-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="w-2/3 h-full bg-gradient-to-r from-secondary to-primary rounded-full"></div>
+</div>
+<span class="text-[11px] font-mono text-on-surface-variant">4/6</span>
+</div>
+</div>
+</main>
+<!-- Modal / Drawer Backdrop Layer -->
+<div class="fixed inset-0 z-40 bg-surface-container-lowest/50 backdrop-blur-sm transition-opacity flex items-center justify-center p-4 md:p-6 lg:p-8">
+<!-- Active Drawer / Modal (Surface Tier 2: Serene Frosted Dark Glassmorphism) -->
+<div class="relative w-full max-w-2xl h-[90vh] bg-surface-container-low/85 backdrop-blur-2xl border border-outline-variant/40 rounded-3xl shadow-2xl shadow-primary-container/10 flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-300">
+<!-- Top Neon Atmosphere Gradient Bar -->
+<div class="h-1 w-full bg-gradient-to-r from-primary via-secondary to-tertiary"></div>
+<!-- Header Section -->
+<div class="px-6 py-4 flex items-center justify-between border-b border-outline-variant/30 bg-surface-container-lowest/40 backdrop-blur-md">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-primary-container/30 to-secondary-container/20 border border-primary/30 flex items-center justify-center text-primary shadow-[0_0_15px_rgba(221,183,255,0.2)]">
+<span class="material-symbols-outlined text-xl">palette</span>
+</div>
+<div>
+<h2 class="font-headline text-lg font-bold text-on-surface tracking-tight flex items-center gap-2">
+              Aesthetic Canvas &amp; Atmosphere
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono font-medium bg-primary/10 text-primary border border-primary/25">Pro Vibe</span>
+</h2>
+<p class="font-body text-xs text-on-surface-variant">Customize your ambient visual space and live digital wallpaper</p>
+</div>
+</div>
+<!-- Close Button (Frosted circle button) -->
+<button class="w-9 h-9 rounded-full bg-surface-container/60 hover:bg-surface-bright/70 border border-outline-variant/40 text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-all duration-200 active:scale-95 group">
+<span class="material-symbols-outlined text-lg group-hover:rotate-90 transition-transform duration-200">close</span>
+</button>
+</div>
+<!-- Scrollable Modal Content Body -->
+<div class="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-6">
+<!-- Section 1: Category Filter Tabs -->
+<div>
+<div class="flex items-center justify-between mb-2.5">
+<span class="text-xs font-semibold uppercase tracking-wider text-outline font-headline">Environment Themes</span>
+<span class="text-[11px] text-secondary font-mono">14 Spaces Available</span>
+</div>
+<div class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar text-xs font-headline">
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container-high/60 hover:bg-surface-bright text-on-surface-variant border border-outline-variant/30 hover:text-on-surface transition-all">All</button>
+<button class="px-3.5 py-1.5 rounded-full bg-primary/20 text-primary border border-primary/40 font-semibold shadow-[0_0_12px_rgba(221,183,255,0.2)] flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs">forest</span>
+              Nature &amp; Forest
+            </button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container-high/60 hover:bg-surface-bright text-on-surface-variant border border-outline-variant/30 hover:text-on-surface transition-all flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs">rainy</span>
+              Rain &amp; Cyberpunk
+            </button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container-high/60 hover:bg-surface-bright text-on-surface-variant border border-outline-variant/30 hover:text-on-surface transition-all flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs">coffee</span>
+              Cozy Coffee
+            </button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container-high/60 hover:bg-surface-bright text-on-surface-variant border border-outline-variant/30 hover:text-on-surface transition-all flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs">videocam</span>
+              Live Video Loops
+            </button>
+</div>
+</div>
+<!-- Section 2: Thumbnail Gallery Grid -->
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold uppercase tracking-wider text-outline font-headline">Curated Ambient Canvases</span>
+<span class="text-[11px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary">check</span> Auto-saves on selection
+            </span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3.5">
+<!-- Card 1: Tokyo Neon Rain (Active State with glow border ring) -->
+<div class="group relative rounded-2xl overflow-hidden aspect-video border-2 border-primary shadow-[0_0_20px_rgba(183,109,255,0.35)] cursor-pointer transition-transform duration-200 active:scale-98">
+<img alt="Tokyo Neon Rain" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Tokyo rainy neon cityscape street at midnight with glowing vibrant magenta signs, wet reflections on asphalt, and cyberpunk atmospheric steam." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDETmIKMPbLbe8JsmDiefk3E7AeJNlqdx0_WGVJ8uXZquURpHUy0O0gUQv-9gkOAJaOmCuXRGGfsL8QpT-tWGVjVafdKofKI3Qqy_NykaP7w3fpGZ8w5ZeXW2Dg2LUxASCzWapkM6UvzCTBC3OgMHH6jXheQ_67mcLuiY809RZg7vhZqZdwOy4jfXkouonVo8m60AbfBZyYrzb1WKFTZqGQ7RR7s-jxEpt_oFlTYiskAqKnf7QBJMYuVAkNc6dRACXn1vGKr1rPorg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-surface-container-lowest/30 to-transparent"></div>
+<!-- Checkmark Active Badge -->
+<div class="absolute top-2 right-2 w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-xs font-bold" style="font-variation-settings: 'FILL' 1;">done</span>
+</div>
+<!-- Badges & Labels -->
+<div class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/70 backdrop-blur-md border border-outline-variant/40 text-[9px] font-mono text-secondary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+                4K Live
+              </div>
+<div class="absolute bottom-2 left-2.5 right-2.5 flex items-center justify-between">
+<span class="text-xs font-semibold text-on-surface font-headline truncate">Tokyo Neon Rain</span>
+<span class="text-[10px] text-primary font-mono">Active</span>
+</div>
+</div>
+<!-- Card 2: Misty Pine Forest (Current Workspace Theme) -->
+<div class="group relative rounded-2xl overflow-hidden aspect-video border border-outline-variant/30 hover:border-outline-variant/70 cursor-pointer transition-all duration-200 active:scale-98 bg-surface-container">
+<img alt="Misty Pine Forest" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida/AEtjO1XgPVt_FPb9IMnj_kI8XEpRwb6Y4N8ozFZYBlCVLhRmw_Y99M_7Ux2FiQdmqFdnR45sn4xfmvYlQYFEgie_fnJ9k_4zL5W3kSN4ZFqhaEL6o5zMmBchhcUk0imYLAtBtc5p4oqDqNYNahEZLELqFn3xEU2V1LcRj1bzyHEDeUx3RYPc14kKqP9tazRYQ2d0rIp9eotREy3wOAj4zwsMMAKkw3Ii_SrThWywdKaYZ_-E1f06LLp1UGq87Fs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-surface-container-lowest/20 to-transparent"></div>
+<div class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/70 backdrop-blur-md border border-outline-variant/40 text-[9px] font-mono text-tertiary">
+                HD
+              </div>
+<div class="absolute bottom-2 left-2.5 right-2.5 flex items-center justify-between">
+<span class="text-xs font-semibold text-on-surface font-headline truncate">Misty Pine Forest</span>
+<span class="text-[10px] text-outline font-mono">Default</span>
+</div>
+</div>
+<!-- Card 3: Cozy Kyoto Teahouse -->
+<div class="group relative rounded-2xl overflow-hidden aspect-video border border-outline-variant/30 hover:border-outline-variant/70 cursor-pointer transition-all duration-200 active:scale-98 bg-surface-container">
+<img alt="Cozy Kyoto Teahouse" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Traditional Japanese wooden teahouse in Kyoto with glowing paper lanterns in the evening, gentle rain falling in a zen garden courtyard, serene tranquil mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVpsanBygnJYZ8BQTVyZTiZNjidLnadYCHxrLW4Ylvm2nNPRSpQdcJbjY9ZNBVH4w5R4k50jNrdVkVAYZErvtbCertlG4P-Pe5MAKDRdCz1l4F0xAzm0USPF15sjQWwiInLuYKjEj9dM7i6ce2nGq-4Ymnnx9BgvwwTYwg5ssWUybeEvXPphDpTnHVMV-DuS1shZy3bd5bhrb9kzI9uymQvpDQoK-m7y-ozv3cEcOtJYTC7Wkr_wDB8B4yJoeDWg-FVLtw88tLSec"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-surface-container-lowest/20 to-transparent"></div>
+<div class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/70 backdrop-blur-md border border-outline-variant/40 text-[9px] font-mono text-secondary">
+                4K
+              </div>
+<div class="absolute bottom-2 left-2.5 right-2.5">
+<span class="text-xs font-semibold text-on-surface font-headline truncate block">Cozy Kyoto Teahouse</span>
+</div>
+</div>
+<!-- Card 4: Nordic Winter Cabin -->
+<div class="group relative rounded-2xl overflow-hidden aspect-video border border-outline-variant/30 hover:border-outline-variant/70 cursor-pointer transition-all duration-200 active:scale-98 bg-surface-container">
+<img alt="Nordic Winter Cabin" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Nordic Scandinavian wooden cabin surrounded by deep snow and snow-dusted spruce trees during blue hour twilight with warm interior fireplace window glow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvw5unUmrvNMiocwFNtbD2JGxrh5FqMa33SECVV33LmU6N9FE2rEx7ScSo-x-se56n1n2z2H9Qco7WM-Vpls5KtS6vjrf9jOwcTxW1cnaMZZc-P3FvMeBbPDD4XZ8sfVYdyy0ku6Li1tbnyMBuDxsY5-LQXktm9yjlk8b4d6_QAtGvKssH_rUWeDy92QPGglhNQxIfsT7PHVK_cMN5WYs0Gdudu0eU4ZNJ1Z-q5EAgkrr74KvnADrsigpH7NDY4YINnWkfdJ7e4Mw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-surface-container-lowest/20 to-transparent"></div>
+<div class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/70 backdrop-blur-md border border-outline-variant/40 text-[9px] font-mono text-outline">
+                HD
+              </div>
+<div class="absolute bottom-2 left-2.5 right-2.5">
+<span class="text-xs font-semibold text-on-surface font-headline truncate block">Nordic Winter Cabin</span>
+</div>
+</div>
+<!-- Card 5: Cyberpunk Study (Using Lo-Fi Desk Girl Asset) -->
+<div class="group relative rounded-2xl overflow-hidden aspect-video border border-outline-variant/30 hover:border-outline-variant/70 cursor-pointer transition-all duration-200 active:scale-98 bg-surface-container">
+<img alt="Cyberpunk Study" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida/AEtjO1WSiO1SOwmCwFAJp6EK16glBvaC18trlu0z3GQBTGO9m93_SxUKUK0DtYaxLubm0vFG_nGWtHpjfMTy9rcEua-fBdgJf7U5QAnLQmvyrAnrQUN_dcrmduuGn3b-y6SH9a3yFdK8UiVAgXyplxhkdiISlsigtnp2bTmqgKuzeJTcY-Fl1CnT8mRFLLV35JE1vldm_8uq14BzVkG2pRoWHTvNymkeUg_wvvZ98mqH76sLwffl1gTvPEHi4Lo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-surface-container-lowest/20 to-transparent"></div>
+<div class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/70 backdrop-blur-md border border-outline-variant/40 text-[9px] font-mono text-secondary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+                4K Live
+              </div>
+<div class="absolute bottom-2 left-2.5 right-2.5">
+<span class="text-xs font-semibold text-on-surface font-headline truncate block">Cyberpunk Study</span>
+</div>
+</div>
+<!-- Card 6: Lo-Fi Sunset Balcony -->
+<div class="group relative rounded-2xl overflow-hidden aspect-video border border-outline-variant/30 hover:border-outline-variant/70 cursor-pointer transition-all duration-200 active:scale-98 bg-surface-container">
+<img alt="Lo-Fi Sunset Balcony" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Lo-fi anime style balcony apartment view of purple dusk clouds over city skyline with warm glowing fairy lights and lush potted plants." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6CXfZcGeYWYiBdBr0qzirnyK-iGIPmuNjfGSj8jJJoTcbZ3YM_hvdcz0J1GN9K1REx7v-g96C59BLW61JUAJRQ9ooHwNJgnuppU4IpHFH-EjwhxeXPTHGMZPoKKzqtH7GPW6tLFjU_fc9WGveNkywDOLtw_bVJqRD9pYC-56I4mNiJPm65eR-kcvNsQMdzWi0HIc6t1bi3A523QyTBBTIgcCyyqOIXa-Gk9-M8Dp7q3-grrxrAZXHU8ZbKemePatHFaSQBO6NC7Q"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-surface-container-lowest/20 to-transparent"></div>
+<div class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/70 backdrop-blur-md border border-outline-variant/40 text-[9px] font-mono text-outline">
+                HD
+              </div>
+<div class="absolute bottom-2 left-2.5 right-2.5">
+<span class="text-xs font-semibold text-on-surface font-headline truncate block">Lo-Fi Sunset Balcony</span>
+</div>
+</div>
+<!-- Card 7: Ocean Waves at Dusk (spans 3-col on wider displays) -->
+<div class="group relative rounded-2xl overflow-hidden aspect-video border border-outline-variant/30 hover:border-outline-variant/70 cursor-pointer transition-all duration-200 active:scale-98 bg-surface-container">
+<img alt="Ocean Waves at Dusk" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Serene ocean shoreline at twilight with glowing bioluminescent turquoise gentle waves crashing on dark sand under a starry night sky." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARckWuMQuEuh5533RdI-RWQ-jcQrTBNJ4tDbkwIGK40fVDH9OgumTEP0cv8dHLjRh90SXkEc1K7G1RWcws3k4F1c2WcW1ULweR0Diuske88gU1JJ1J9tKm0NQMaEyb0sZ-qqJ91Tzr4SdaAvDs9qAlwblY3eZyr9dtV2Hbw_2oIlhxXyonZtoXJCXalYKEvimR8ILaRELGZd2i0zjGgoyppgRFdlvOVM-dEJC-Uizl8fTwpML4SN8xnd8Gp9xIAoiaMYVXWeIuyEk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-surface-container-lowest/20 to-transparent"></div>
+<div class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/70 backdrop-blur-md border border-outline-variant/40 text-[9px] font-mono text-secondary">
+                4K
+              </div>
+<div class="absolute bottom-2 left-2.5 right-2.5">
+<span class="text-xs font-semibold text-on-surface font-headline truncate block">Ocean Waves at Dusk</span>
+</div>
+</div>
+<!-- Card 8: Emerald Bamboo Sanctuary -->
+<div class="group relative rounded-2xl overflow-hidden aspect-video border border-outline-variant/30 hover:border-outline-variant/70 cursor-pointer transition-all duration-200 active:scale-98 bg-surface-container">
+<img alt="Emerald Bamboo Sanctuary" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Dense emerald green bamboo forest grove in Arashiyama shrouded in misty morning light with smooth stone pathway and zen stone lantern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDu5RoAWfaW6VL-laBhUzylXiruqfuaFgvwObNQrxGus5F-hU_vY9uIUeTi6_QjKZopsfs0xwCjHj47zFYd_2gLJ7DNJ2SN2kQiB1iAhx2nsCRr-QXTx-hcYUlYTTO1xoZMQ_dPqr7_zr4C7ExhgbEG_r0PfroJvtpSzHscEs7oYEDkOYWmjzAEb-vuLS4FiCN9pMiGbFJ1iVMJprorLSBbX61RuElBakTYdeCs8kdTmsjAHzFh-_Jqxh6GQHe05ok3FXRVeJ-Q_fs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-surface-container-lowest/20 to-transparent"></div>
+<div class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/70 backdrop-blur-md border border-outline-variant/40 text-[9px] font-mono text-tertiary">
+                HD
+              </div>
+<div class="absolute bottom-2 left-2.5 right-2.5">
+<span class="text-xs font-semibold text-on-surface font-headline truncate block">Bamboo Grove Mist</span>
+</div>
+</div>
+<!-- Card 9: Starry Solitude Mountain -->
+<div class="group relative rounded-2xl overflow-hidden aspect-video border border-outline-variant/30 hover:border-outline-variant/70 cursor-pointer transition-all duration-200 active:scale-98 bg-surface-container">
+<img alt="Starry Solitude Mountain" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Majestic alpine snow mountain peaks at midnight under a brilliant Milky Way galaxy sky with shimmering purple cosmic nebulae and still lake reflections." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfLBsl6PZGR3mlwd97N1BEJzkHSHah1dIe5oKLD6DB8zSJgiOxOx2e1FpLkzQKnVP6o5AlmXK34T2-j8dRBnlLTuLYhgzwTzL7KaMGlRY4zFxeVYrM09eSXUnw-k70YoQxhpV9BGCKOdDDTup3mLWlFsT2hU0ZRnXp22FDVDW6pPpdGqFD6GEZfg6KQw6YAYtp5ZS5IkCXZAELv3WFaMLGM04RVl1dH159vetT-m1_g5VyX_KOicBlPMolaXh4BmHoHkvtusCYfuA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-surface-container-lowest/20 to-transparent"></div>
+<div class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/70 backdrop-blur-md border border-outline-variant/40 text-[9px] font-mono text-secondary">
+                4K Live
+              </div>
+<div class="absolute bottom-2 left-2.5 right-2.5">
+<span class="text-xs font-semibold text-on-surface font-headline truncate block">Starry Solitude</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 3: Custom Background Uploader -->
+<div class="space-y-2">
+<span class="text-xs font-semibold uppercase tracking-wider text-outline font-headline">Import Custom Visuals</span>
+<div class="border border-dashed border-primary/30 hover:border-primary/60 bg-surface-container-lowest/30 hover:bg-surface-container/30 rounded-2xl p-5 text-center transition-all duration-200 group">
+<div class="w-10 h-10 mx-auto rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-lg">cloud_upload</span>
+</div>
+<p class="mt-2 text-xs font-medium text-on-surface">Drop custom image / video (.mp4, .webm) or paste URL</p>
+<p class="text-[11px] text-on-surface-variant/70 mt-0.5">Recommended resolution: 1920x1080 or 3840x2160 up to 50MB</p>
+<div class="mt-3 flex items-center gap-2 max-w-md mx-auto">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-sm text-outline">link</span>
+<input class="w-full pl-8 pr-3 py-1.5 text-xs bg-surface-container-high/60 border border-outline-variant/40 rounded-xl text-on-surface placeholder:text-outline/70 focus:outline-none focus:border-primary" placeholder="https://example.com/ambient-loop.mp4" type="text"/>
+</div>
+<button class="px-3 py-1.5 bg-surface-container-high hover:bg-surface-bright text-on-surface text-xs font-semibold rounded-xl border border-outline-variant/40 transition active:scale-95 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">folder_open</span>
+                Browse Files
+              </button>
+</div>
+</div>
+</div>
+<!-- Section 4: Atmosphere Adjustment Sliders & Live Controls -->
+<div class="space-y-3 bg-surface-container-lowest/40 border border-outline-variant/30 rounded-2xl p-4">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold uppercase tracking-wider text-outline font-headline">Atmosphere &amp; Focus Tuning</span>
+<span class="text-[11px] text-secondary font-mono">Real-time Shaders</span>
+</div>
+<!-- Slider 1: Dark Overlay Opacity -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between text-xs">
+<label class="text-on-surface font-medium flex items-center gap-1.5" for="opacity-slider">
+<span class="material-symbols-outlined text-sm text-primary">brightness_medium</span>
+                Dark Overlay Opacity
+              </label>
+<span class="font-mono text-xs px-2 py-0.5 rounded-md bg-primary/10 text-primary border border-primary/20">40%</span>
+</div>
+<input class="w-full h-1.5 bg-surface-container-high rounded-lg appearance-none cursor-pointer accent-primary" id="opacity-slider" max="90" min="0" type="range" value="40"/>
+<div class="flex justify-between text-[10px] font-mono text-outline">
+<span>0% (Vivid)</span>
+<span>45% (Balanced)</span>
+<span>90% (Deep Focus)</span>
+</div>
+</div>
+<!-- Slider 2: Background Blur -->
+<div class="space-y-1.5 pt-2 border-t border-outline-variant/20">
+<div class="flex items-center justify-between text-xs">
+<label class="text-on-surface font-medium flex items-center gap-1.5" for="blur-slider">
+<span class="material-symbols-outlined text-sm text-secondary">blur_on</span>
+                Background Blur
+              </label>
+<span class="font-mono text-xs px-2 py-0.5 rounded-md bg-secondary/10 text-secondary border border-secondary/20">8px (Subtle Focus)</span>
+</div>
+<input class="w-full h-1.5 bg-surface-container-high rounded-lg appearance-none cursor-pointer accent-secondary" id="blur-slider" max="20" min="0" type="range" value="8"/>
+<div class="flex justify-between text-[10px] font-mono text-outline">
+<span>0px (Crisp)</span>
+<span>10px (Soft Depth)</span>
+<span>20px (Abstract)</span>
+</div>
+</div>
+<!-- Quick Filter Toggles -->
+<div class="grid grid-cols-3 gap-2 pt-2 border-t border-outline-variant/20">
+<button class="flex items-center justify-between px-3 py-2 rounded-xl bg-surface-container-high/50 border border-primary/40 text-xs text-on-surface transition">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-primary">vignette</span>
+                Vignette Glow
+              </span>
+<span class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_#ddb7ff]"></span>
+</button>
+<button class="flex items-center justify-between px-3 py-2 rounded-xl bg-surface-container-high/30 border border-outline-variant/30 text-xs text-on-surface-variant hover:text-on-surface transition">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-outline">grain</span>
+                Grain &amp; CRT
+              </span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+</button>
+<button class="flex items-center justify-between px-3 py-2 rounded-xl bg-surface-container-high/50 border border-secondary/40 text-xs text-on-surface transition">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-secondary">flare</span>
+                Breathing Light
+              </span>
+<span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]"></span>
+</button>
+</div>
+</div>
+</div>
+<!-- Section 5: Bottom Sticky Action Bar -->
+<div class="px-6 py-4 border-t border-outline-variant/30 bg-surface-container-lowest/70 backdrop-blur-xl flex items-center justify-between">
+<button class="px-4 py-2 rounded-xl border border-outline-variant/40 text-on-surface-variant hover:text-on-surface hover:bg-surface-container text-xs font-semibold transition active:scale-95 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">restart_alt</span>
+          Reset to Default
+        </button>
+<div class="flex items-center gap-2.5">
+<button class="px-4 py-2 rounded-xl border border-outline-variant/40 text-on-surface hover:bg-surface-container text-xs font-semibold transition active:scale-95 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">visibility</span>
+            Preview Clean
+          </button>
+<button class="px-6 py-2.5 rounded-xl bg-primary-container text-on-primary-container hover:bg-primary hover:text-on-primary font-headline text-xs font-bold shadow-lg shadow-primary-container/30 transition-all duration-200 active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            Apply Canvas
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Shared BottomNavBar Component (Floating Dock Bar) -->
+<nav class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 bg-surface-container/70 backdrop-blur-xl rounded-full border border-outline-variant/40 px-4 py-2 shadow-2xl font-label text-xs tracking-tight">
+<!-- Item 1: Music -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:text-on-surface hover:text-secondary hover:bg-surface-bright/40 rounded-full transition-all duration-200 active:scale-90">
+<span class="material-symbols-outlined text-lg">music_note</span>
+<span>Music</span>
+</button>
+<!-- Item 2: Ambience -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:text-on-surface hover:text-secondary hover:bg-surface-bright/40 rounded-full transition-all duration-200 active:scale-90">
+<span class="material-symbols-outlined text-lg">graphic_eq</span>
+<span>Ambience</span>
+</button>
+<!-- Item 3: Tasks -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:text-on-surface hover:text-secondary hover:bg-surface-bright/40 rounded-full transition-all duration-200 active:scale-90">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+<span>Tasks</span>
+</button>
+<!-- Item 4: Wallpaper (Active state with glow indicator) -->
+<button class="flex flex-col items-center justify-center text-primary bg-primary/10 rounded-full px-3 py-1.5 shadow-[0_0_12px_rgba(221,183,255,0.25)] active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">wallpaper</span>
+<span class="font-semibold">Wallpaper</span>
+</button>
+<!-- Item 5: Fullscreen -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:text-on-surface hover:text-secondary hover:bg-surface-bright/40 rounded-full transition-all duration-200 active:scale-90">
+<span class="material-symbols-outlined text-lg">fullscreen</span>
+<span>Fullscreen</span>
+</button>
+</nav>
+<!-- Lightweight Micro-interactions script for live slider preview demo -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const opacitySlider = document.getElementById('opacity-slider');
+      const blurSlider = document.getElementById('blur-slider');
+      
+      if (opacitySlider) {
+        opacitySlider.addEventListener('input', (e) => {
+          const val = e.target.value;
+          const badge = e.target.previousElementSibling.querySelector('span');
+          if (badge) badge.textContent = `${val}%`;
+        });
+      }
+
+      if (blurSlider) {
+        blurSlider.addEventListener('input', (e) => {
+          const val = e.target.value;
+          const badge = e.target.previousElementSibling.querySelector('span');
+          if (badge) badge.textContent = `${val}px (${val < 5 ? 'Subtle' : val < 15 ? 'Balanced' : 'Dreamy'})`;
+        });
+      }
+    });
+  </script>
+</body></html>

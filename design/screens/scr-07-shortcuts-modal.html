@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VibeSpace - Keyboard Shortcuts Cheat Sheet</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Public+Sans:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary-container": "#b76dff",
+            "surface-variant": "#313540",
+            "surface-tint": "#ddb7ff",
+            "surface-container-highest": "#313540",
+            "on-secondary-container": "#00424e",
+            "tertiary": "#4edea3",
+            "outline": "#988d9f",
+            "on-primary-container": "#400071",
+            "tertiary-fixed": "#6ffbbe",
+            "secondary-container": "#03b5d3",
+            "on-secondary": "#003640",
+            "tertiary-fixed-dim": "#4edea3",
+            "surface-container-low": "#171b26",
+            "secondary-fixed": "#acedff",
+            "secondary": "#4cd7f6",
+            "on-error-container": "#ffdad6",
+            "surface-container": "#1c1f2a",
+            "error-container": "#93000a",
+            "on-secondary-fixed": "#001f26",
+            "inverse-surface": "#dfe2f1",
+            "on-tertiary-fixed": "#002113",
+            "on-primary-fixed-variant": "#6900b3",
+            "on-surface-variant": "#cfc2d6",
+            "primary-fixed-dim": "#ddb7ff",
+            "surface-container-high": "#262a35",
+            "inverse-on-surface": "#2c303b",
+            "error": "#ffb4ab",
+            "on-tertiary-container": "#00311f",
+            "outline-variant": "#4d4354",
+            "primary-fixed": "#f0dbff",
+            "tertiary-container": "#00a572",
+            "surface-dim": "#0f131d",
+            "on-tertiary": "#003824",
+            "on-background": "#dfe2f1",
+            "on-primary": "#490080",
+            "on-error": "#690005",
+            "on-secondary-fixed-variant": "#004e5c",
+            "on-surface": "#dfe2f1",
+            "background": "#0f131d",
+            "surface-container-lowest": "#0a0e18",
+            "surface": "#0f131d",
+            "primary": "#ddb7ff",
+            "surface-bright": "#353944",
+            "on-primary-fixed": "#2c0051",
+            "on-tertiary-fixed-variant": "#005236",
+            "secondary-fixed-dim": "#4cd7f6",
+            "inverse-primary": "#842bd2"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          fontFamily: {
+            headline: ["Plus Jakarta Sans", "sans-serif"],
+            display: ["Plus Jakarta Sans", "sans-serif"],
+            body: ["Inter", "sans-serif"],
+            label: ["Public Sans", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.22);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body min-h-screen overflow-hidden relative select-none antialiased">
+<!-- Fullscreen Ambient Wallpaper Backdrop -->
+<div class="fixed inset-0 z-0 overflow-hidden">
+<img alt="Atmospheric dark misty pine forest under a deep starry night" class="w-full h-full object-cover object-center transform scale-105 filter brightness-90 transition-transform duration-1000 ease-out" src="https://lh3.googleusercontent.com/aida/AEtjO1XgPVt_FPb9IMnj_kI8XEpRwb6Y4N8ozFZYBlCVLhRmw_Y99M_7Ux2FiQdmqFdnR45sn4xfmvYlQYFEgie_fnJ9k_4zL5W3kSN4ZFqhaEL6o5zMmBchhcUk0imYLAtBtc5p4oqDqNYNahEZLELqFn3xEU2V1LcRj1bzyHEDeUx3RYPc14kKqP9tazRYQ2d0rIp9eotREy3wOAj4zwsMMAKkw3Ii_SrThWywdKaYZ_-E1f06LLp1UGq87Fs"/>
+<!-- Dimmer Gradient Vibe Layer -->
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-surface-container-lowest/50 to-background/70"></div>
+</div>
+<!-- Subtle Silhouetted Ambient Timer in Background (Workspace Depth) -->
+<div class="fixed inset-0 pointer-events-none z-10 flex flex-col items-center justify-center opacity-30 blur-[1px]">
+<span class="text-secondary/70 font-mono tracking-widest text-sm font-semibold uppercase mb-2">Focus Session • Deep Work</span>
+<h1 class="text-8xl md:text-9xl font-headline font-extrabold tracking-tighter text-on-surface/90 select-none">24:59</h1>
+<div class="flex items-center gap-4 mt-6 text-on-surface-variant text-sm">
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-tertiary">spa</span> Zen Flow Active</span>
+<span>•</span>
+<span>Session #3 of 4</span>
+</div>
+</div>
+<!-- Dark Backdrop Scrim for Active Modal Layer -->
+<div class="fixed inset-0 bg-black/60 backdrop-blur-md z-30 transition-all duration-300"></div>
+<!-- TopNavBar (Shared Component JSON Blueprint) -->
+<header class="fixed top-0 left-0 w-full z-40 border-b border-outline-variant/30 bg-surface-container-lowest/60 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center w-full px-6 py-3 max-w-7xl mx-auto">
+<!-- Brand & Status Group -->
+<div class="flex items-center gap-6">
+<a class="font-headline text-lg font-bold tracking-wider text-primary flex items-center gap-2" href="#">
+<span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse shadow-[0_0_12px_#a855f7]"></span>
+          VibeSpace
+        </a>
+<!-- Live Clock Pill -->
+<div class="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-secondary">schedule</span>
+<span>05:30 Thursday, Sep 17</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="hidden md:flex items-center gap-8 font-headline text-sm text-on-surface">
+<a class="text-primary font-semibold border-b-2 border-primary pb-1 transition-all duration-200" href="#">Focus</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">Sounds</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">Spaces</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">Analytics</a>
+</nav>
+<!-- Trailing Action Cluster -->
+<div class="flex items-center gap-3">
+<!-- Shortcuts Cheat Sheet Trigger Badge (Active State Highlight) -->
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/20 text-primary border border-primary/30 text-xs font-headline font-semibold shadow-[0_0_15px_rgba(168,85,247,0.25)] hover:bg-primary/30 transition-all" title="Keyboard Shortcuts Cheat Sheet">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">keyboard</span>
+<span class="hidden sm:inline">Shortcuts</span>
+<kbd class="ml-1 text-[10px] font-mono bg-white/10 px-1.5 py-0.5 rounded border border-white/20">?</kbd>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-all duration-200 active:scale-95 rounded-full hover:bg-white/5" title="Reminders &amp; Notifications">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-all duration-200 active:scale-95 rounded-full hover:bg-white/5" title="Settings">
+<span class="material-symbols-outlined text-xl">settings</span>
+</button>
+<!-- Trailing Primary Action -->
+<button class="hidden lg:flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary font-headline text-xs font-bold tracking-wide hover:brightness-110 shadow-lg shadow-secondary/20 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm">fullscreen</span>
+          Zen Mode
+        </button>
+<!-- User Profile Avatar -->
+<div class="w-8 h-8 rounded-full border border-primary/40 bg-surface-container-high flex items-center justify-center text-xs font-semibold text-primary ring-2 ring-primary/20 cursor-pointer hover:ring-primary/40 transition-all">
+          VS
+        </div>
+</div>
+</div>
+</header>
+<!-- Main Canvas Centered Modal Container -->
+<main class="fixed inset-0 z-40 flex items-center justify-center p-4 md:p-6 pointer-events-none">
+<!-- Modal Dialog (Centered, Luxury Dark Frosted Glassmorphism Tier 2) -->
+<div class="pointer-events-auto w-full max-w-2xl max-h-[88vh] flex flex-col rounded-3xl bg-[#16181e]/85 backdrop-blur-2xl border border-white/[0.16] shadow-2xl shadow-purple-950/50 ring-1 ring-white/10 overflow-hidden transform transition-all duration-300 animate-in fade-in zoom-in-95">
+<!-- Modal Header Section -->
+<div class="relative px-6 pt-6 pb-5 border-b border-white/[0.08] bg-gradient-to-b from-white/[0.04] to-transparent flex items-start justify-between">
+<div class="flex items-center gap-4">
+<!-- Frosted Command Icon Badge with Neon Gradient Accent -->
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-primary/30 to-secondary/20 border border-white/20 flex items-center justify-center shadow-inner shadow-white/20 text-primary">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">keyboard_command_key</span>
+</div>
+<div>
+<div class="flex items-center gap-2.5">
+<h2 class="font-headline font-bold text-xl md:text-2xl text-white tracking-tight">Keyboard Shortcuts</h2>
+<span class="px-2.5 py-0.5 rounded-full bg-gradient-to-r from-primary-container/30 to-secondary/30 border border-primary/40 text-[11px] font-headline font-semibold text-primary tracking-wide uppercase shadow-[0_0_10px_rgba(168,85,247,0.25)]">
+                Pro Flow
+              </span>
+</div>
+<p class="text-xs md:text-sm text-on-surface-variant/80 mt-0.5 font-body">
+              Navigate your zen space with zero mouse friction
+            </p>
+</div>
+</div>
+<!-- Sleek Close Button -->
+<button aria-label="Close modal" class="text-on-surface-variant hover:text-white p-2 rounded-full hover:bg-white/[0.08] border border-transparent hover:border-white/10 transition-all duration-150 active:scale-90">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+<!-- Quick Search / Filter Bar -->
+<div class="px-6 py-3 border-b border-white/[0.06] bg-black/20 flex items-center gap-3">
+<span class="material-symbols-outlined text-lg text-outline">search</span>
+<input class="w-full bg-transparent border-0 p-0 text-sm text-on-surface placeholder:text-outline/70 focus:ring-0 focus:outline-none font-body" placeholder="Filter shortcuts (e.g., Timer, Sound, Fullscreen)..." type="text"/>
+<span class="text-[11px] font-mono text-outline/60 px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06]">Search</span>
+</div>
+<!-- Modal Body (Scrollable Bento / Category List) -->
+<div class="px-6 py-5 overflow-y-auto space-y-6 custom-scrollbar flex-1">
+<!-- Category 1: Timer & Focus Controls -->
+<section>
+<div class="flex items-center gap-2 mb-3 text-xs font-headline font-bold uppercase tracking-wider text-secondary">
+<span class="material-symbols-outlined text-base">timer</span>
+<span>Timer &amp; Focus Controls</span>
+</div>
+<div class="space-y-2">
+<!-- Shortcut Row 1 -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.05] transition-all group">
+<div class="flex items-center gap-3">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary/70"></span>
+<div>
+<div class="text-sm font-medium text-white group-hover:text-secondary transition-colors">Play / Pause Pomodoro Timer</div>
+<div class="text-xs text-on-surface-variant/70">Instant toggle focus session countdown</div>
+</div>
+</div>
+<div class="flex items-center gap-1.5">
+<kbd class="min-w-[4rem] text-center font-mono font-bold text-xs text-secondary-fixed bg-white/[0.08] hover:bg-white/[0.14] border border-white/20 rounded-lg px-3 py-1.5 shadow-[0_2px_4px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.15)] transition-all">
+                  Space
+                </kbd>
+</div>
+</div>
+<!-- Shortcut Row 2 -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.05] transition-all group">
+<div class="flex items-center gap-3">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary/40"></span>
+<div>
+<div class="text-sm font-medium text-white group-hover:text-secondary transition-colors">Reset Current Pomodoro</div>
+<div class="text-xs text-on-surface-variant/70">Restores cycle back to default interval</div>
+</div>
+</div>
+<div>
+<kbd class="inline-block min-w-[2.25rem] text-center font-mono font-bold text-xs text-secondary-fixed bg-white/[0.08] hover:bg-white/[0.14] border border-white/20 rounded-lg px-2.5 py-1.5 shadow-[0_2px_4px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.15)] transition-all">
+                  R
+                </kbd>
+</div>
+</div>
+<!-- Shortcut Row 3 -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.05] transition-all group">
+<div class="flex items-center gap-3">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary/40"></span>
+<div>
+<div class="text-sm font-medium text-white group-hover:text-secondary transition-colors">Skip Session / Break</div>
+<div class="text-xs text-on-surface-variant/70">Jump straight into next working or rest phase</div>
+</div>
+</div>
+<div>
+<kbd class="inline-block min-w-[2.25rem] text-center font-mono font-bold text-xs text-secondary-fixed bg-white/[0.08] hover:bg-white/[0.14] border border-white/20 rounded-lg px-2.5 py-1.5 shadow-[0_2px_4px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.15)] transition-all">
+                  S
+                </kbd>
+</div>
+</div>
+</div>
+</section>
+<!-- Category 2: Audio & Atmosphere -->
+<section>
+<div class="flex items-center gap-2 mb-3 text-xs font-headline font-bold uppercase tracking-wider text-primary">
+<span class="material-symbols-outlined text-base">graphic_eq</span>
+<span>Audio &amp; Atmosphere</span>
+</div>
+<div class="space-y-2">
+<!-- Shortcut Row 4 -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.05] transition-all group">
+<div class="flex items-center gap-3">
+<span class="w-1.5 h-1.5 rounded-full bg-primary/70"></span>
+<div>
+<div class="text-sm font-medium text-white group-hover:text-primary transition-colors">Master Mute / Unmute All Audio</div>
+<div class="text-xs text-on-surface-variant/70">Silences rain, lofi, and background soundscapes</div>
+</div>
+</div>
+<div>
+<kbd class="inline-block min-w-[2.25rem] text-center font-mono font-bold text-xs text-primary bg-white/[0.08] hover:bg-white/[0.14] border border-white/20 rounded-lg px-2.5 py-1.5 shadow-[0_2px_4px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.15)] transition-all">
+                  M
+                </kbd>
+</div>
+</div>
+<!-- Shortcut Row 5 -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.05] transition-all group">
+<div class="flex items-center gap-3">
+<span class="w-1.5 h-1.5 rounded-full bg-primary/40"></span>
+<div>
+<div class="text-sm font-medium text-white group-hover:text-primary transition-colors">Open Sound Mixer Drawer</div>
+<div class="text-xs text-on-surface-variant/70">Fine-tune binaural beats &amp; environmental audio</div>
+</div>
+</div>
+<div>
+<kbd class="inline-block min-w-[2.25rem] text-center font-mono font-bold text-xs text-primary bg-white/[0.08] hover:bg-white/[0.14] border border-white/20 rounded-lg px-2.5 py-1.5 shadow-[0_2px_4px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.15)] transition-all">
+                  P
+                </kbd>
+</div>
+</div>
+<!-- Shortcut Row 6 -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.05] transition-all group">
+<div class="flex items-center gap-3">
+<span class="w-1.5 h-1.5 rounded-full bg-primary/40"></span>
+<div>
+<div class="text-sm font-medium text-white group-hover:text-primary transition-colors">Open Wallpaper &amp; Canvas Switcher</div>
+<div class="text-xs text-on-surface-variant/70">Switch scenes between rainy forests, cafes &amp; stars</div>
+</div>
+</div>
+<div>
+<kbd class="inline-block min-w-[2.25rem] text-center font-mono font-bold text-xs text-primary bg-white/[0.08] hover:bg-white/[0.14] border border-white/20 rounded-lg px-2.5 py-1.5 shadow-[0_2px_4px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.15)] transition-all">
+                  W
+                </kbd>
+</div>
+</div>
+</div>
+</section>
+<!-- Category 3: Workspace Navigation -->
+<section>
+<div class="flex items-center gap-2 mb-3 text-xs font-headline font-bold uppercase tracking-wider text-tertiary">
+<span class="material-symbols-outlined text-base">space_dashboard</span>
+<span>Workspace Navigation</span>
+</div>
+<div class="space-y-2">
+<!-- Shortcut Row 7 -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.05] transition-all group">
+<div class="flex items-center gap-3">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary/70"></span>
+<div>
+<div class="text-sm font-medium text-white group-hover:text-tertiary transition-colors">Open Daily Todo Drawer</div>
+<div class="text-xs text-on-surface-variant/70">Slide out checklist &amp; quick priority scratchpad</div>
+</div>
+</div>
+<div>
+<kbd class="inline-block min-w-[2.25rem] text-center font-mono font-bold text-xs text-tertiary bg-white/[0.08] hover:bg-white/[0.14] border border-white/20 rounded-lg px-2.5 py-1.5 shadow-[0_2px_4px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.15)] transition-all">
+                  T
+                </kbd>
+</div>
+</div>
+<!-- Shortcut Row 8 -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.05] transition-all group">
+<div class="flex items-center gap-3">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary/40"></span>
+<div>
+<div class="text-sm font-medium text-white group-hover:text-tertiary transition-colors">Toggle Zen Fullscreen Mode</div>
+<div class="text-xs text-on-surface-variant/70">Hide browser Chrome &amp; docks for deep immersion</div>
+</div>
+</div>
+<div>
+<kbd class="inline-block min-w-[2.25rem] text-center font-mono font-bold text-xs text-tertiary bg-white/[0.08] hover:bg-white/[0.14] border border-white/20 rounded-lg px-2.5 py-1.5 shadow-[0_2px_4px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.15)] transition-all">
+                  F
+                </kbd>
+</div>
+</div>
+<!-- Shortcut Row 9 -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.05] transition-all group">
+<div class="flex items-center gap-3">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary/40"></span>
+<div>
+<div class="text-sm font-medium text-white group-hover:text-tertiary transition-colors">Toggle This Shortcuts Modal</div>
+<div class="text-xs text-on-surface-variant/70">Open or hide this reference card anywhere</div>
+</div>
+</div>
+<div>
+<kbd class="inline-block min-w-[2.25rem] text-center font-mono font-bold text-xs text-tertiary bg-white/[0.08] hover:bg-white/[0.14] border border-white/20 rounded-lg px-2.5 py-1.5 shadow-[0_2px_4px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.15)] transition-all">
+                  ?
+                </kbd>
+</div>
+</div>
+<!-- Shortcut Row 10 -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.05] transition-all group">
+<div class="flex items-center gap-3">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary/40"></span>
+<div>
+<div class="text-sm font-medium text-white group-hover:text-tertiary transition-colors">Close Any Open Drawer / Modal</div>
+<div class="text-xs text-on-surface-variant/70">Instantly dismiss active overlay and return to timer</div>
+</div>
+</div>
+<div>
+<kbd class="inline-block min-w-[3rem] text-center font-mono font-bold text-xs text-tertiary bg-white/[0.08] hover:bg-white/[0.14] border border-white/20 rounded-lg px-2.5 py-1.5 shadow-[0_2px_4px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.15)] transition-all">
+                  Esc
+                </kbd>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Modal Frosted Footer Strip -->
+<div class="px-6 py-4 border-t border-white/[0.08] bg-black/40 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary">tips_and_updates</span>
+<span>Pro tip: Press <kbd class="font-mono text-[10px] bg-white/10 px-1.5 py-0.5 rounded border border-white/20 text-white">?</kbd> anytime to toggle • <kbd class="font-mono text-[10px] bg-white/10 px-1.5 py-0.5 rounded border border-white/20 text-white">Esc</kbd> to dismiss</span>
+</div>
+<button class="px-4 py-1.5 rounded-lg bg-white/[0.08] hover:bg-white/[0.14] border border-white/15 text-white font-headline text-xs font-semibold tracking-wide transition-all active:scale-95 flex items-center gap-1.5">
+<span>Got it</span>
+</button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Shared Component JSON Floating Dock Blueprint) -->
+<footer class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 rounded-full border border-outline-variant/40 px-4 py-2 bg-surface-container/70 backdrop-blur-xl shadow-2xl">
+<!-- Item 1: Music -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:text-secondary hover:bg-surface-bright/40 rounded-full transition-all duration-200 active:scale-90 group">
+<span class="material-symbols-outlined text-lg mb-0.5">music_note</span>
+<span class="font-label text-xs tracking-tight">Music</span>
+</button>
+<!-- Item 2: Ambience -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:text-secondary hover:bg-surface-bright/40 rounded-full transition-all duration-200 active:scale-90 group">
+<span class="material-symbols-outlined text-lg mb-0.5">graphic_eq</span>
+<span class="font-label text-xs tracking-tight">Ambience</span>
+</button>
+<!-- Item 3: Tasks -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:text-secondary hover:bg-surface-bright/40 rounded-full transition-all duration-200 active:scale-90 group">
+<span class="material-symbols-outlined text-lg mb-0.5">check_circle</span>
+<span class="font-label text-xs tracking-tight">Tasks</span>
+</button>
+<!-- Item 4: Wallpaper -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:text-secondary hover:bg-surface-bright/40 rounded-full transition-all duration-200 active:scale-90 group">
+<span class="material-symbols-outlined text-lg mb-0.5">wallpaper</span>
+<span class="font-label text-xs tracking-tight">Wallpaper</span>
+</button>
+<!-- Item 5: Fullscreen -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:text-secondary hover:bg-surface-bright/40 rounded-full transition-all duration-200 active:scale-90 group">
+<span class="material-symbols-outlined text-lg mb-0.5">fullscreen</span>
+<span class="font-label text-xs tracking-tight">Fullscreen</span>
+</button>
+</footer>
+</body></html>

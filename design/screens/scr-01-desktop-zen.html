@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VibeSpace — Zen Focus Workspace</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Public+Sans:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&family=Public+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline": "#988d9f",
+            "on-primary": "#490080",
+            "on-primary-fixed": "#2c0051",
+            "primary-fixed-dim": "#ddb7ff",
+            "on-surface": "#dfe2f1",
+            "on-tertiary-fixed": "#002113",
+            "on-background": "#dfe2f1",
+            "on-secondary-fixed-variant": "#004e5c",
+            "inverse-primary": "#842bd2",
+            "tertiary": "#4edea3",
+            "surface-container": "#1c1f2a",
+            "on-tertiary-container": "#00311f",
+            "inverse-on-surface": "#2c303b",
+            "secondary-container": "#03b5d3",
+            "surface-bright": "#353944",
+            "error-container": "#93000a",
+            "on-secondary-container": "#00424e",
+            "on-error": "#690005",
+            "surface-container-lowest": "#0a0e18",
+            "on-tertiary-fixed-variant": "#005236",
+            "on-tertiary": "#003824",
+            "on-secondary": "#003640",
+            "on-surface-variant": "#cfc2d6",
+            "surface-tint": "#ddb7ff",
+            "on-secondary-fixed": "#001f26",
+            "outline-variant": "#4d4354",
+            "surface-container-highest": "#313540",
+            "primary-container": "#b76dff",
+            "tertiary-container": "#00a572",
+            "background": "#0f131d",
+            "tertiary-fixed": "#6ffbbe",
+            "secondary": "#4cd7f6",
+            "on-primary-container": "#400071",
+            "secondary-fixed-dim": "#4cd7f6",
+            "surface-container-high": "#262a35",
+            "surface": "#0f131d",
+            "primary": "#ddb7ff",
+            "on-primary-fixed-variant": "#6900b3",
+            "secondary-fixed": "#acedff",
+            "on-error-container": "#ffdad6",
+            "primary-fixed": "#f0dbff",
+            "surface-variant": "#313540",
+            "surface-container-low": "#171b26",
+            "inverse-surface": "#dfe2f1",
+            "tertiary-fixed-dim": "#4edea3",
+            "error": "#ffb4ab",
+            "surface-dim": "#0f131d"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Plus Jakarta Sans"],
+            "display": ["Plus Jakarta Sans"],
+            "body": ["Inter"],
+            "label": ["Public Sans"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 350, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+      vertical-align: middle;
+    }
+    
+    /* Subtle pulse animation */
+    @keyframes subtle-pulse {
+      0%, 100% { opacity: 0.8; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+    .animate-zen-pulse {
+      animation: subtle-pulse 3s infinite ease-in-out;
+    }
+
+    /* Soundwave bars animation */
+    @keyframes wave-bar {
+      0%, 100% { height: 4px; }
+      50% { height: 14px; }
+    }
+    .wave-1 { animation: wave-bar 1.2s infinite ease-in-out; }
+    .wave-2 { animation: wave-bar 0.9s infinite ease-in-out 0.2s; }
+    .wave-3 { animation: wave-bar 1.4s infinite ease-in-out 0.4s; }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body h-screen w-screen overflow-hidden select-none relative">
+<!-- Fixed Fullscreen Wallpaper Layer -->
+<div class="fixed inset-0 z-0">
+<img alt="Forest Background" class="w-full h-full object-cover object-center scale-105 transition-transform duration-1000 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9PrzToztNR-pWJFJ9BipLmbgg9KSZfvuMWPcD9TeRYvhY14V2ddjXNcged3Yz0TFyqzRvaUHksM3_9JHqTbgZKD8j_DF5IKIWGUbQWHw76SSKRwKBMXh-ihSjCQ6kfF2zzVXspPPAz1XGaFKsixLY7wIF6dkyrrE9zXMiydz8oDHeAXQyW2U8eMBbped_ksGKWu1bIx_r8AwX6TcDzDfXQPau819skUl6z0rW_GVHgbtxI6F-kRzneP09vPga5NBN1Yk-eyD1j7s"/>
+<!-- Serene Dark Glass Overlay with fine vignette -->
+<div class="absolute inset-0 bg-surface-container-lowest/50 backdrop-blur-[3px] bg-gradient-to-b from-surface-container-lowest/60 via-transparent to-surface-container-lowest/70"></div>
+</div>
+<!-- Main Canvas Wrapper -->
+<div class="relative z-10 flex flex-col justify-between h-full w-full">
+<!-- Top Navigation Header (from Shared Components JSON & Brand Spec) -->
+<header class="fixed top-0 left-0 w-full z-40 border-b border-outline-variant/30 bg-surface-container-lowest/60 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center w-full px-8 py-3.5 max-w-7xl mx-auto">
+<!-- Left: Brand Logo & Status -->
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2.5">
+<span class="font-headline text-lg font-bold tracking-wider text-primary">VibeSpace</span>
+<!-- Online Zen Active Indicator -->
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span>
+</span>
+</div>
+<!-- Navigation Links (Contextual to Shared JSON) -->
+<nav class="hidden md:flex items-center gap-6 ml-6 font-headline text-sm">
+<a class="text-primary font-semibold border-b-2 border-primary pb-1 transition-all" href="#">Focus</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary" href="#">Sounds</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary" href="#">Spaces</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary" href="#">Analytics</a>
+</nav>
+</div>
+<!-- Right: Current Clock, Date & Zen Mode Actions -->
+<div class="flex items-center gap-5">
+<!-- Time and Date Indicator -->
+<div class="hidden sm:flex flex-col items-end text-right">
+<span class="font-headline font-semibold text-sm tracking-wide text-on-surface" id="header-time">19:30</span>
+<span class="text-xs text-on-surface-variant/80 font-label tracking-tight" id="header-date">Thursday, Sep 17</span>
+</div>
+<!-- Vertical Divider -->
+<div class="hidden sm:block w-px h-5 bg-outline-variant/40"></div>
+<!-- Shortcuts Pill Action Button -->
+<button class="group flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-high/40 hover:bg-surface-bright/50 border border-outline-variant/40 text-xs font-label text-on-surface-variant hover:text-on-surface transition-all duration-200 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary transition-transform group-hover:rotate-12">keyboard</span>
+<span>Shortcuts (?)</span>
+</button>
+<!-- Primary Zen Mode Trigger Button (JSON Trailing Primary Action) -->
+<button class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-primary/20 hover:bg-primary/30 border border-primary/40 text-primary text-xs font-medium tracking-wide shadow-sm hover:shadow-primary/20 transition-all duration-200 active:scale-95" id="zen-mode-toggle" type="button">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">spa</span>
+<span>Zen Mode</span>
+</button>
+<!-- Trailing Icon Actions from JSON -->
+<div class="flex items-center gap-1 text-on-surface-variant">
+<button class="p-1.5 rounded-full hover:bg-surface-bright/40 hover:text-primary transition-colors active:scale-95" title="Schedule" type="button">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+</button>
+<button class="p-1.5 rounded-full hover:bg-surface-bright/40 hover:text-primary transition-colors active:scale-95" title="Notifications" type="button">
+<span class="material-symbols-outlined text-[18px]">notifications</span>
+</button>
+<button class="p-1.5 rounded-full hover:bg-surface-bright/40 hover:text-primary transition-colors active:scale-95" title="Settings" type="button">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Center Workspace: Focus Canvas & Pomodoro Core -->
+<main class="flex-1 flex items-center justify-center px-4 pt-16 pb-24">
+<!-- Minimalist Deep Glass Pomodoro Card -->
+<div class="relative group bg-surface-container-lowest/60 backdrop-blur-2xl border border-outline-variant/30 rounded-3xl p-8 sm:p-10 shadow-2xl max-w-md w-full text-center flex flex-col items-center gap-7 transition-all duration-300 hover:border-primary/30 hover:shadow-primary/5">
+<!-- Ambient Radial Glow behind the card -->
+<div class="absolute -inset-0.5 bg-gradient-to-r from-primary/15 via-secondary/10 to-tertiary/15 rounded-3xl blur-xl opacity-60 group-hover:opacity-100 transition duration-700 pointer-events-none"></div>
+<!-- Top Status Pill Badge -->
+<div class="relative z-10 flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/25 text-primary text-xs font-headline font-medium tracking-wide">
+<span class="h-1.5 w-1.5 rounded-full bg-primary animate-zen-pulse"></span>
+<span>Focus Session</span>
+<span class="text-on-surface-variant/50 text-[10px]">•</span>
+<span class="text-on-surface-variant/80 text-[11px]">Deep Work</span>
+</div>
+<!-- Timer Center Display -->
+<div class="relative z-10 flex flex-col items-center justify-center">
+<div class="font-headline font-extrabold text-7xl sm:text-8xl tracking-tighter text-on-surface drop-shadow-[0_4px_24px_rgba(221,183,255,0.15)]" id="timer-display">
+            25:00
+          </div>
+<p class="mt-2 text-xs font-label uppercase tracking-widest text-on-surface-variant/60">Session 1 of 4</p>
+</div>
+<!-- Session Cycle Interval Indicator (4 Steps) -->
+<div class="relative z-10 w-full max-w-[200px] flex items-center justify-between gap-2.5">
+<!-- Step 1: Active -->
+<div class="h-1.5 flex-1 rounded-full bg-primary shadow-sm shadow-primary/50 transition-all"></div>
+<!-- Step 2: Pending -->
+<div class="h-1.5 flex-1 rounded-full bg-surface-bright/50 transition-all"></div>
+<!-- Step 3: Pending -->
+<div class="h-1.5 flex-1 rounded-full bg-surface-bright/50 transition-all"></div>
+<!-- Step 4: Pending -->
+<div class="h-1.5 flex-1 rounded-full bg-surface-bright/50 transition-all"></div>
+</div>
+<!-- Action Control Buttons -->
+<div class="relative z-10 flex items-center justify-center gap-3.5 w-full pt-1">
+<!-- Primary Play/Pause Button with Glowing Accent -->
+<button class="group/btn relative px-8 py-3.5 rounded-full bg-primary text-on-primary font-headline font-semibold text-sm shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:bg-primary-fixed transition-all duration-200 active:scale-95 flex items-center justify-center gap-2" id="timer-toggle-btn" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span id="timer-btn-text">Start Focus</span>
+</button>
+<!-- Secondary Reset / Skip Button -->
+<button class="px-4 py-3.5 rounded-full bg-surface-container-high/40 hover:bg-surface-bright/60 border border-outline-variant/30 text-on-surface-variant hover:text-on-surface text-sm font-medium transition-all duration-200 active:scale-95 flex items-center justify-center" id="timer-reset-btn" title="Reset Session" type="button">
+<span class="material-symbols-outlined text-[18px]">replay</span>
+</button>
+<!-- Ambient Sound Toggle in Card -->
+<button class="px-4 py-3.5 rounded-full bg-surface-container-high/40 hover:bg-surface-bright/60 border border-outline-variant/30 text-secondary hover:text-secondary-fixed text-sm font-medium transition-all duration-200 active:scale-95 flex items-center justify-center" title="Quick Ambience" type="button">
+<span class="material-symbols-outlined text-[18px]">nature</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Bottom Floating Dock (from Shared Components JSON & Brand Spec) -->
+<nav class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 rounded-full border border-outline-variant/40 bg-surface-container/70 backdrop-blur-xl px-4 py-2 shadow-2xl">
+<!-- Dock Item 1: Music (YouTube Lofi Player) -->
+<button class="flex flex-col items-center justify-center text-primary bg-primary/10 rounded-full px-3 py-1.5 active:scale-90 transition-transform duration-150 group relative" type="button">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">music_note</span>
+<!-- Animated sound waves -->
+<div class="flex items-end gap-[2px] h-3.5 pb-0.5">
+<div class="w-[2px] bg-primary rounded-full wave-1"></div>
+<div class="w-[2px] bg-primary rounded-full wave-2"></div>
+<div class="w-[2px] bg-primary rounded-full wave-3"></div>
+</div>
+</div>
+<span class="font-label text-[11px] tracking-tight mt-0.5 font-medium">Music</span>
+</button>
+<!-- Dock Item 2: Ambience (Sound Mixer) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:text-on-surface hover:text-secondary hover:bg-surface-bright/40 rounded-full transition-all duration-200 active:scale-90" type="button">
+<span class="material-symbols-outlined text-[18px]">graphic_eq</span>
+<span class="font-label text-[11px] tracking-tight mt-0.5">Ambience</span>
+</button>
+<!-- Dock Item 3: Tasks (Daily Checklist with '3 left' badge) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:text-on-surface hover:text-secondary hover:bg-surface-bright/40 rounded-full transition-all duration-200 active:scale-90 relative" type="button">
+<div class="relative">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span class="absolute -top-1 -right-2 bg-secondary text-on-secondary text-[9px] font-bold px-1 rounded-full leading-tight">3</span>
+</div>
+<span class="font-label text-[11px] tracking-tight mt-0.5">Tasks</span>
+</button>
+<!-- Dock Item 4: Wallpaper (Scenery switcher) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:text-on-surface hover:text-secondary hover:bg-surface-bright/40 rounded-full transition-all duration-200 active:scale-90" type="button">
+<span class="material-symbols-outlined text-[18px]">wallpaper</span>
+<span class="font-label text-[11px] tracking-tight mt-0.5">Wallpaper</span>
+</button>
+<!-- Dock Item 5: Fullscreen (Zen Fullscreen toggle) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:text-on-surface hover:text-secondary hover:bg-surface-bright/40 rounded-full transition-all duration-200 active:scale-90" id="fullscreen-btn" type="button">
+<span class="material-symbols-outlined text-[18px]">fullscreen</span>
+<span class="font-label text-[11px] tracking-tight mt-0.5">Fullscreen</span>
+</button>
+</nav>
+</div>
+<!-- Micro-interactions & Functional Timer Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let isRunning = false;
+      let totalSeconds = 25 * 60;
+      let timerInterval = null;
+
+      const timerDisplay = document.getElementById('timer-display');
+      const timerBtn = document.getElementById('timer-toggle-btn');
+      const timerBtnText = document.getElementById('timer-btn-text');
+      const resetBtn = document.getElementById('timer-reset-btn');
+      const fullscreenBtn = document.getElementById('fullscreen-btn');
+      const zenModeToggle = document.getElementById('zen-mode-toggle');
+
+      function formatTime(sec) {
+        const m = Math.floor(sec / 60).toString().padStart(2, '0');
+        const s = (sec % 60).toString().padStart(2, '0');
+        return `${m}:${s}`;
+      }
+
+      function updateClock() {
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const timeStr = `${hours}:${minutes}`;
+        const headerTime = document.getElementById('header-time');
+        if (headerTime) headerTime.textContent = timeStr;
+      }
+      setInterval(updateClock, 1000);
+      updateClock();
+
+      timerBtn.addEventListener('click', () => {
+        if (!isRunning) {
+          isRunning = true;
+          timerBtnText.textContent = 'Pause';
+          timerBtn.classList.remove('bg-primary');
+          timerBtn.classList.add('bg-secondary', 'text-on-secondary');
+          timerInterval = setInterval(() => {
+            if (totalSeconds > 0) {
+              totalSeconds--;
+              timerDisplay.textContent = formatTime(totalSeconds);
+            } else {
+              clearInterval(timerInterval);
+              isRunning = false;
+              timerBtnText.textContent = 'Start Focus';
+              timerBtn.classList.add('bg-primary');
+              timerBtn.classList.remove('bg-secondary', 'text-on-secondary');
+            }
+          }, 1000);
+        } else {
+          isRunning = false;
+          clearInterval(timerInterval);
+          timerBtnText.textContent = 'Resume';
+          timerBtn.classList.add('bg-primary');
+          timerBtn.classList.remove('bg-secondary', 'text-on-secondary');
+        }
+      });
+
+      resetBtn.addEventListener('click', () => {
+        clearInterval(timerInterval);
+        isRunning = false;
+        totalSeconds = 25 * 60;
+        timerDisplay.textContent = '25:00';
+        timerBtnText.textContent = 'Start Focus';
+        timerBtn.classList.add('bg-primary');
+        timerBtn.classList.remove('bg-secondary', 'text-on-secondary');
+      });
+
+      fullscreenBtn.addEventListener('click', () => {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        } else {
+          document.exitFullscreen().catch(() => {});
+        }
+      });
+
+      let zenActive = false;
+      zenModeToggle.addEventListener('click', () => {
+        zenActive = !zenActive;
+        const header = document.querySelector('header');
+        const nav = document.querySelector('nav');
+        if (zenActive) {
+          header.classList.add('opacity-0', 'pointer-events-none');
+          nav.classList.add('opacity-20', 'hover:opacity-100');
+        } else {
+          header.classList.remove('opacity-0', 'pointer-events-none');
+          nav.classList.remove('opacity-20');
+        }
+      });
+    });
+  </script>
+</body></html>

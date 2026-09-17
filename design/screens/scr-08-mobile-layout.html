@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>VibeSpace — Zen Focus Workspace</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;family=Public+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#0f131d",
+            "surface-tint": "#ddb7ff",
+            "primary": "#ddb7ff",
+            "inverse-surface": "#dfe2f1",
+            "secondary-fixed-dim": "#4cd7f6",
+            "tertiary-fixed": "#6ffbbe",
+            "secondary": "#4cd7f6",
+            "primary-container": "#b76dff",
+            "on-error": "#690005",
+            "inverse-primary": "#842bd2",
+            "secondary-container": "#03b5d3",
+            "outline": "#988d9f",
+            "on-primary-fixed-variant": "#6900b3",
+            "surface-dim": "#0f131d",
+            "surface-container-high": "#262a35",
+            "on-primary-fixed": "#2c0051",
+            "inverse-on-surface": "#2c303b",
+            "surface-container-lowest": "#0a0e18",
+            "tertiary-container": "#00a572",
+            "on-tertiary": "#003824",
+            "on-tertiary-fixed": "#002113",
+            "on-surface-variant": "#cfc2d6",
+            "on-surface": "#dfe2f1",
+            "on-tertiary-container": "#00311f",
+            "on-secondary-container": "#00424e",
+            "error": "#ffb4ab",
+            "secondary-fixed": "#acedff",
+            "surface-bright": "#353944",
+            "on-error-container": "#ffdad6",
+            "primary-fixed": "#f0dbff",
+            "on-primary-container": "#400071",
+            "outline-variant": "#4d4354",
+            "on-secondary": "#003640",
+            "surface-container-low": "#171b26",
+            "surface-container-highest": "#313540",
+            "on-secondary-fixed-variant": "#004e5c",
+            "on-background": "#dfe2f1",
+            "surface-variant": "#313540",
+            "on-tertiary-fixed-variant": "#005236",
+            "tertiary": "#4edea3",
+            "surface-container": "#1c1f2a",
+            "error-container": "#93000a",
+            "background": "#0f131d",
+            "on-secondary-fixed": "#001f26",
+            "on-primary": "#490080",
+            "tertiary-fixed-dim": "#4edea3",
+            "primary-fixed-dim": "#ddb7ff"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          fontFamily: {
+            "headline": ["Plus Jakarta Sans", "sans-serif"],
+            "display": ["Plus Jakarta Sans", "sans-serif"],
+            "body": ["Inter", "sans-serif"],
+            "label": ["Public Sans", "sans-serif"],
+            "mono": ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 350, 'GRAD' 0, 'opsz' 24;
+      line-height: 1;
+      display: inline-block;
+    }
+    
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .animate-spin-slow {
+      animation: spin-slow 14s linear infinite;
+    }
+
+    @keyframes pulse-soft {
+      0%, 100% { opacity: 0.95; transform: scale(1); }
+      50% { opacity: 0.75; transform: scale(0.98); }
+    }
+    .animate-breathe {
+      animation: pulse-soft 6s ease-in-out infinite;
+    }
+
+    @keyframes wave-bar {
+      0%, 100% { height: 4px; }
+      50% { height: 14px; }
+    }
+    .bar-1 { animation: wave-bar 1.1s ease-in-out infinite 0.1s; }
+    .bar-2 { animation: wave-bar 0.9s ease-in-out infinite 0.3s; }
+    .bar-3 { animation: wave-bar 1.3s ease-in-out infinite 0.2s; }
+    .bar-4 { animation: wave-bar 0.8s ease-in-out infinite 0.4s; }
+
+    /* Custom touch slider track styling */
+    input[type=range]::-webkit-slider-thumb {
+      appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: 0 0 8px rgba(183, 109, 255, 0.8);
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      margin-top: -4px;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 6px;
+      cursor: pointer;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-[#0b0f19] text-on-surface font-body antialiased selection:bg-primary-container selection:text-white flex justify-center min-h-screen">
+<!-- Mobile Viewport Container (390 x 844 target canvas) -->
+<div class="relative w-full max-w-[390px] h-screen max-h-[844px] overflow-hidden flex flex-col justify-between shadow-2xl border border-white/5 bg-[#0b0f19]">
+<!-- Atmospheric Night Forest Backdrop -->
+<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+<img class="w-full h-full object-cover object-center scale-105 filter brightness-[0.70] contrast-105" data-alt="A tranquil atmospheric pine forest under a misty deep midnight blue starry night sky, with silhouettes of towering conifers and soft ethereal fog rolling between dark mossy ground. The lighting is low-key, featuring serene moonlit gradients and mystical blue-violet ambient tones. Highly cinematic digital art with a serene, meditative mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHCszkgErCs2zu6fk9EK9JqIZnTdgQxSY6hRxPXfY02jaZt3whvmVMipUo-wuRAE2Tnr5p9-YCqhCrjXse0ZujDXWwm9Fuc8uucJfCPfKKdaUcelV7m3yfWvKHN9LqZB9yY4ZoKUC_MFxLyPMA0HM7dzPGR5E0fDqCDXwhv9-b9H94VNzr-btgN86eH0e_7_R1GMLdZeLRg5yKdlioR1Gd8TtSEukfV4fpDn0Xla766ztt7g9CfgOZFqV51ZuZlyvSWPXwl4VhIJA"/>
+<!-- Dark Frosted Vignette Overlay (Tier 1 Surface Atmosphere) -->
+<div class="absolute inset-0 bg-[#0b0f19]/80 backdrop-blur-[3px] bg-gradient-to-b from-[#0b0f19]/90 via-transparent to-[#0b0f19]/95"></div>
+<div class="absolute top-1/4 -left-20 w-64 h-64 bg-primary/15 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute top-1/3 -right-20 w-60 h-60 bg-secondary/15 rounded-full blur-3xl pointer-events-none"></div>
+</div>
+<!-- Status Bar (iOS Minimalist Aesthetic) -->
+<div class="relative z-50 flex items-center justify-between px-6 pt-3 pb-1 text-xs font-headline font-semibold text-white/80 select-none">
+<span class="tracking-tight text-[13px] font-mono">05:30</span>
+<div class="flex items-center space-x-2 text-[15px] opacity-85">
+<span class="material-symbols-outlined text-[15px]" data-icon="signal_cellular_alt">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[15px]" data-icon="wifi">wifi</span>
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="battery_full">battery_full</span>
+</div>
+</div>
+<!-- TopAppBar Component (from Shared Components JSON) -->
+<header class="relative z-40 bg-surface/55 backdrop-blur-md border-b border-outline-variant/20 shadow-sm px-5 h-14 flex items-center justify-between mx-auto w-full transition-all">
+<!-- Leading Brand Cluster -->
+<div class="flex items-center space-x-2.5">
+<div class="w-8 h-8 rounded-full bg-primary/15 border border-primary/30 flex items-center justify-center text-primary shadow-[0_0_12px_rgba(221,183,255,0.3)]">
+<span class="material-symbols-outlined text-[18px]" data-icon="spa" data-weight="fill">spa</span>
+</div>
+<div class="flex items-center space-x-1.5">
+<span class="font-headline text-lg font-bold tracking-wider text-on-surface">VibeSpace</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]"></span>
+</div>
+</div>
+<!-- Flow State Active Badge & Trailing Action -->
+<div class="flex items-center space-x-2">
+<div class="flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-surface-container-highest/60 border border-secondary/30 backdrop-blur-md shadow-[0_0_10px_rgba(76,215,246,0.15)]">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-ping"></span>
+<span class="font-label text-[10px] font-semibold text-secondary uppercase tracking-wider">Flow Active</span>
+</div>
+<button aria-label="Zen Mode" class="w-9 h-9 rounded-full bg-surface-variant/40 border border-white/10 flex items-center justify-center text-primary hover:text-secondary hover:bg-surface-variant/60 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[19px]" data-icon="self_improvement">self_improvement</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas (Pomodoro Stage + Audio Pill) -->
+<main class="relative z-10 flex-1 flex flex-col items-center justify-center px-5 pt-1 pb-24 overflow-y-auto no-scrollbar">
+<!-- Center Stage Mobile Pomodoro Card (Tier 3 Card) -->
+<div class="w-full max-w-[340px] rounded-3xl bg-surface-container/45 backdrop-blur-xl border border-white/10 p-5 flex flex-col items-center shadow-[0_8px_32px_rgba(0,0,0,0.45)] relative overflow-hidden animate-breathe">
+<!-- Glow accents inside card -->
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-primary/20 rounded-full blur-2xl pointer-events-none"></div>
+<div class="absolute -bottom-10 -left-10 w-28 h-28 bg-secondary/20 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Session Status Pill -->
+<div class="flex items-center space-x-2 px-3 py-1 rounded-full bg-surface-container-high/70 border border-primary/20 backdrop-blur-md mb-4 shadow-[0_0_12px_rgba(183,109,255,0.12)]">
+<span class="w-2 h-2 rounded-full bg-primary shadow-[0_0_6px_#ddb7ff]"></span>
+<span class="font-headline text-[11px] font-semibold tracking-wide text-primary-fixed">Session 2 of 4 • Deep Focus</span>
+</div>
+<!-- Radial Countdown Progress Ring -->
+<div class="relative w-48 h-48 flex items-center justify-center my-1">
+<svg class="w-full h-full -rotate-90 transform" viewbox="0 0 100 100">
+<!-- Background Ring -->
+<circle cx="50" cy="50" fill="transparent" r="42" stroke="rgba(255, 255, 255, 0.08)" stroke-width="5"></circle>
+<!-- Glowing Progress Ring -->
+<defs>
+<lineargradient id="timerGradient" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#ddb7ff"></stop>
+<stop offset="60%" stop-color="#b76dff"></stop>
+<stop offset="100%" stop-color="#4cd7f6"></stop>
+</lineargradient>
+<filter height="140%" id="glow" width="140%" x="-20%" y="-20%">
+<fedropshadow dx="0" dy="0" flood-color="#ddb7ff" flood-opacity="0.6" stddeviation="2"></fedropshadow>
+</filter>
+</defs>
+<circle cx="50" cy="50" fill="transparent" filter="url(#glow)" r="42" stroke="url(#timerGradient)" stroke-dasharray="263.89" stroke-dashoffset="65" stroke-linecap="round" stroke-width="5"></circle>
+</svg>
+<!-- Inside Radial Stats -->
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center select-none">
+<span class="font-mono text-4xl font-bold tracking-tight text-white drop-shadow-[0_2px_12px_rgba(221,183,255,0.4)]">
+              24:18
+            </span>
+<span class="font-label text-[11px] font-medium tracking-widest text-on-surface-variant/80 uppercase mt-0.5">
+              Time Remaining
+            </span>
+</div>
+</div>
+<!-- Session Progress Indicator Dots -->
+<div class="flex items-center space-x-2.5 my-3">
+<!-- Dot 1: Completed -->
+<span class="w-2.5 h-2.5 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6]"></span>
+<!-- Dot 2: Current Active Glowing -->
+<span class="w-3 h-3 rounded-full bg-primary ring-2 ring-primary/40 shadow-[0_0_10px_#ddb7ff] animate-pulse"></span>
+<!-- Dot 3: Upcoming -->
+<span class="w-2.5 h-2.5 rounded-full border border-white/30 bg-transparent"></span>
+<!-- Dot 4: Upcoming -->
+<span class="w-2.5 h-2.5 rounded-full border border-white/30 bg-transparent"></span>
+</div>
+<!-- Touch Controls Row -->
+<div class="flex items-center justify-center space-x-5 mt-2">
+<!-- Reset Action -->
+<button aria-label="Reset Timer" class="w-10 h-10 rounded-full bg-surface-variant/40 border border-white/10 flex items-center justify-center text-on-surface-variant hover:text-white hover:bg-surface-variant/70 active:scale-90 transition-transform duration-150 shadow-sm">
+<span class="material-symbols-outlined text-[19px]" data-icon="restart_alt">restart_alt</span>
+</button>
+<!-- Main Toggle CTA (Vibrant Purple Glow) -->
+<button aria-label="Pause Session" class="w-14 h-14 rounded-full bg-gradient-to-br from-primary via-primary-container to-inverse-primary text-on-primary-container flex items-center justify-center shadow-[0_0_24px_rgba(183,109,255,0.65)] border border-white/25 active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined text-[28px]" data-icon="pause" data-weight="fill">pause</span>
+</button>
+<!-- Skip Session Action -->
+<button aria-label="Skip to Next Break" class="w-10 h-10 rounded-full bg-surface-variant/40 border border-white/10 flex items-center justify-center text-on-surface-variant hover:text-white hover:bg-surface-variant/70 active:scale-90 transition-transform duration-150 shadow-sm">
+<span class="material-symbols-outlined text-[19px]" data-icon="skip_next">skip_next</span>
+</button>
+</div>
+</div>
+<!-- Mini YouTube Audio Floating Pill -->
+<div class="w-full max-w-[340px] mt-3.5 px-3.5 py-2.5 rounded-2xl bg-surface-container/60 backdrop-blur-md border border-white/10 flex items-center justify-between shadow-[0_4px_20px_rgba(0,0,0,0.35)] active:scale-[0.99] transition-all">
+<!-- Vinyl Record / Artwork with Rotation -->
+<div class="relative w-10 h-10 rounded-full flex-shrink-0 p-0.5 bg-gradient-to-tr from-primary to-secondary shadow-[0_0_10px_rgba(76,215,246,0.3)]">
+<img alt="Lofi Study Music Thumbnail" class="w-full h-full rounded-full object-cover animate-spin-slow" src="https://lh3.googleusercontent.com/aida/AEtjO1WhSgiYlYAZutqOxDTYhO2rpA6U5a0eKXmcQqAyRujZ8pVl-rbm70D49m0QNFUnjzYyvFfj65QtaE3qbRNCrcLQWB1MYlp8LbIBkdA49MlKE9JrQZIfd3UagzxPQUW7SpkgMmr4Z9mXogjt2ISZG-UTtrj0Km3n5ec6fr9ghYRtvXm9NiMHY52kkLPnUHNnuvsRt-fgkhY0EylekVNsXPIzQmm9plaE1wBdu8hPjQppM3CDMxAge41diEM"/>
+<div class="absolute inset-0 rounded-full border border-black/30 pointer-events-none"></div>
+</div>
+<!-- Track Info & Soundwave Bars -->
+<div class="flex-1 mx-3 min-w-0">
+<div class="flex items-center space-x-1.5">
+<p class="font-headline text-[12px] font-semibold text-white truncate">Lofi Hip Hop Radio</p>
+<span class="px-1.5 py-0.2 text-[9px] font-bold rounded bg-red-500/30 text-red-300 border border-red-500/40 uppercase tracking-tighter">Live</span>
+</div>
+<p class="font-body text-[10px] text-on-surface-variant/75 truncate mt-0.5">Beats to Relax/Study • Lofi Girl</p>
+</div>
+<!-- Animated Audio Waveform & Toggle Play -->
+<div class="flex items-center space-x-2 flex-shrink-0">
+<div aria-hidden="true" class="flex items-end space-x-0.5 h-4 px-1">
+<span class="w-[2.5px] bg-secondary rounded-full bar-1"></span>
+<span class="w-[2.5px] bg-primary rounded-full bar-2"></span>
+<span class="w-[2.5px] bg-secondary-fixed-dim rounded-full bar-3"></span>
+<span class="w-[2.5px] bg-primary-fixed rounded-full bar-4"></span>
+</div>
+<button aria-label="Toggle YouTube Stream" class="w-8 h-8 rounded-full bg-surface-bright/50 border border-white/10 flex items-center justify-center text-white hover:text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[17px]" data-icon="volume_up">volume_up</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Ambient Noise Bottom Sheet Drawer (Peek / Partial Open State - Tier 2 Surface) -->
+<section class="absolute bottom-14 left-0 right-0 z-30 bg-[#16181e]/85 backdrop-blur-2xl border-t border-white/15 rounded-t-3xl shadow-[0_-10px_35px_rgba(0,0,0,0.6)] px-5 pt-3 pb-3 transition-all duration-300">
+<!-- Drag Handle -->
+<div class="w-10 h-1 bg-white/30 rounded-full mx-auto mb-3 cursor-grab active:cursor-grabbing hover:bg-white/50 transition-colors"></div>
+<!-- Sheet Header Bar -->
+<div class="flex items-center justify-between mb-3 px-0.5">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-secondary text-[19px]" data-icon="graphic_eq">graphic_eq</span>
+<h2 class="font-headline text-xs font-bold text-white tracking-wide">Ambient Sound Mixer</h2>
+<span class="px-2 py-0.5 rounded-full bg-primary/15 border border-primary/30 text-[10px] font-semibold text-primary">3 Active</span>
+</div>
+<button class="font-label text-[11px] font-medium text-on-surface-variant hover:text-secondary transition-colors underline-offset-2">
+          Mute All
+        </button>
+</div>
+<!-- Sound Channel Slider Rows -->
+<div class="space-y-2.5">
+<!-- Rain & Thunder Channel (60% Volume Cyan Accent) -->
+<div class="p-2 rounded-xl bg-white/[0.04] border border-white/5 flex items-center space-x-3">
+<div class="w-7 h-7 rounded-lg bg-secondary/15 text-secondary flex items-center justify-center border border-secondary/30 flex-shrink-0">
+<span class="material-symbols-outlined text-[17px]" data-icon="rainy">rainy</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-center text-[11px] mb-1">
+<span class="font-headline font-semibold text-white/90">Rain &amp; Thunder</span>
+<span class="font-mono text-[10px] text-secondary">60%</span>
+</div>
+<!-- Custom Progress Bar / Slider Container -->
+<div class="relative w-full h-1.5 bg-surface-container-highest/80 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-secondary-container to-secondary rounded-full shadow-[0_0_8px_#4cd7f6]" style="width: 60%"></div>
+</div>
+</div>
+</div>
+<!-- Cozy Campfire Channel (40% Volume Warm Amber Accent) -->
+<div class="p-2 rounded-xl bg-white/[0.04] border border-white/5 flex items-center space-x-3">
+<div class="w-7 h-7 rounded-lg bg-amber-500/15 text-amber-300 flex items-center justify-center border border-amber-500/30 flex-shrink-0">
+<span class="material-symbols-outlined text-[17px]" data-icon="local_fire_department">local_fire_department</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-center text-[11px] mb-1">
+<span class="font-headline font-semibold text-white/90">Cozy Campfire</span>
+<span class="font-mono text-[10px] text-amber-300">40%</span>
+</div>
+<div class="relative w-full h-1.5 bg-surface-container-highest/80 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-amber-600 to-amber-300 rounded-full shadow-[0_0_8px_rgba(251,191,36,0.6)]" style="width: 40%"></div>
+</div>
+</div>
+</div>
+<!-- Pine Forest Wind Channel (25% Volume Emerald Accent) -->
+<div class="p-2 rounded-xl bg-white/[0.04] border border-white/5 flex items-center space-x-3">
+<div class="w-7 h-7 rounded-lg bg-tertiary/15 text-tertiary flex items-center justify-center border border-tertiary/30 flex-shrink-0">
+<span class="material-symbols-outlined text-[17px]" data-icon="air">air</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-center text-[11px] mb-1">
+<span class="font-headline font-semibold text-white/90">Pine Forest Wind</span>
+<span class="font-mono text-[10px] text-tertiary">25%</span>
+</div>
+<div class="relative w-full h-1.5 bg-surface-container-highest/80 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-tertiary-container to-tertiary rounded-full shadow-[0_0_8px_#4edea3]" style="width: 25%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Expand Drawer Chevron Indicator -->
+<div class="flex justify-center items-center pt-2">
+<button class="flex items-center space-x-1 text-[10px] text-on-surface-variant/70 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[14px]" data-icon="keyboard_arrow_up">keyboard_arrow_up</span>
+<span>More soundscapes &amp; presets</span>
+</button>
+</div>
+</section>
+<!-- BottomNavBar Component (from Shared Components JSON - Semantic Destination) -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-around px-6 py-2 pb-6 max-w-[390px] mx-auto bg-surface/55 dark:bg-surface/55 backdrop-blur-xl rounded-t-2xl shadow-lg border-t border-outline-variant/20 dark:border-outline-variant/20">
+<!-- Nav Item 1: Ambience (ACTIVE - Primary Intent) -->
+<a class="flex flex-col items-center justify-center p-2 rounded-xl bg-primary/10 dark:bg-primary/10 text-primary dark:text-primary shadow-[0_0_12px_rgba(183,109,255,0.25)] active:scale-90 transition-transform duration-150" href="#ambience">
+<span class="material-symbols-outlined text-[20px]" data-icon="graphic_eq" data-weight="fill">graphic_eq</span>
+<span class="font-label text-[9px] font-semibold mt-0.5 tracking-tight">Ambience</span>
+</a>
+<!-- Nav Item 2: Tasks (Check Circle with Badge) -->
+<a class="flex flex-col items-center justify-center p-2 rounded-xl text-on-surface-variant/60 dark:text-on-surface-variant/60 hover:text-secondary dark:hover:text-secondary active:scale-90 transition-transform duration-150 relative" href="#tasks">
+<div class="relative">
+<span class="material-symbols-outlined text-[20px]" data-icon="check_circle">check_circle</span>
+<span class="absolute -top-1 -right-1.5 w-3.5 h-3.5 rounded-full bg-primary text-on-primary-container text-[8px] font-bold flex items-center justify-center shadow-[0_0_6px_#ddb7ff]">
+            3
+          </span>
+</div>
+<span class="font-label text-[9px] mt-0.5 tracking-tight">Tasks</span>
+</a>
+<!-- Nav Item 3: Wallpaper -->
+<a class="flex flex-col items-center justify-center p-2 rounded-xl text-on-surface-variant/60 dark:text-on-surface-variant/60 hover:text-secondary dark:hover:text-secondary active:scale-90 transition-transform duration-150" href="#wallpaper">
+<span class="material-symbols-outlined text-[20px]" data-icon="wallpaper">wallpaper</span>
+<span class="font-label text-[9px] mt-0.5 tracking-tight">Wallpaper</span>
+</a>
+<!-- Nav Item 4: Fullscreen Zen -->
+<a class="flex flex-col items-center justify-center p-2 rounded-xl text-on-surface-variant/60 dark:text-on-surface-variant/60 hover:text-secondary dark:hover:text-secondary active:scale-90 transition-transform duration-150" href="#fullscreen">
+<span class="material-symbols-outlined text-[20px]" data-icon="fullscreen">fullscreen</span>
+<span class="font-label text-[9px] mt-0.5 tracking-tight">Zen Mode</span>
+</a>
+</nav>
+</div>
+</body></html>
