@@ -83,6 +83,9 @@ Quy trình phát triển dự án VibeSpace tuân thủ nghiêm ngặt 6 giai đ
     - Thiết lập kỷ luật Senior Software Engineer: Tuân thủ 100% `docs/`, cấm tự ý đổi kiến trúc, cấm tự thêm thư viện, cập nhật `plan.md` sau mỗi task.
   - [x] **TASK-204: Chuẩn hóa Cấu trúc Lưu trữ Tài liệu (`docs/`)**
     - Đưa toàn bộ tài liệu kỹ thuật (`prd.md`, `architecture.md`, `plan.md`) vào thư mục `docs/`.
+  - [x] **TASK-205: Khởi tạo Remote Git Repository & Push Toàn bộ Dự án lên GitHub**
+    - Tạo repository riêng tư (Private) `VibeCodingSpace` trên GitHub (`vothanhduy93/VibeCodingSpace`).
+    - Khởi tạo Git local, thiết lập `.gitignore`, soạn thảo `README.md` và push toàn bộ tài liệu lên nhánh `main`.
 - **Tiêu chuẩn nghiệm thu:** Gate 2 PRD & Architecture Sign-off hoàn tất.
 
 ---
