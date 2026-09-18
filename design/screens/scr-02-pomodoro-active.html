@@ -1,319 +1,358 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>VibeSpace - Zen Focus Workspace</title>
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Public+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<!-- Material Symbols -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VibeSpace - Pomodoro Active Running State (Light Mode)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <script>
     tailwind.config = {
-      darkMode: "class",
       theme: {
         extend: {
-          "colors": {
-            "on-secondary-fixed-variant": "#004e5c",
-            "on-primary-fixed": "#2c0051",
-            "surface-container-high": "#262a35",
-            "surface-tint": "#ddb7ff",
-            "primary-fixed": "#f0dbff",
-            "on-background": "#dfe2f1",
-            "inverse-primary": "#842bd2",
-            "primary-container": "#b76dff",
-            "secondary-container": "#03b5d3",
-            "on-secondary": "#003640",
-            "on-primary-fixed-variant": "#6900b3",
-            "primary": "#ddb7ff",
-            "on-tertiary-fixed": "#002113",
-            "error": "#ffb4ab",
-            "on-primary": "#490080",
-            "tertiary-fixed": "#6ffbbe",
-            "surface": "#0f131d",
-            "outline-variant": "#4d4354",
-            "surface-container-low": "#171b26",
-            "primary-fixed-dim": "#ddb7ff",
-            "surface-container": "#1c1f2a",
-            "tertiary-container": "#00a572",
-            "on-error": "#690005",
-            "inverse-on-surface": "#2c303b",
-            "background": "#0f131d",
-            "on-surface": "#dfe2f1",
-            "on-tertiary-fixed-variant": "#005236",
-            "surface-container-highest": "#313540",
-            "on-surface-variant": "#cfc2d6",
-            "surface-container-lowest": "#0a0e18",
-            "on-primary-container": "#400071",
-            "on-secondary-container": "#00424e",
-            "error-container": "#93000a",
-            "on-secondary-fixed": "#001f26",
-            "surface-bright": "#353944",
-            "outline": "#988d9f",
-            "on-error-container": "#ffdad6",
-            "inverse-surface": "#dfe2f1",
-            "tertiary-fixed-dim": "#4edea3",
-            "surface-variant": "#313540",
-            "tertiary": "#4edea3",
-            "secondary": "#4cd7f6",
-            "secondary-fixed-dim": "#4cd7f6",
-            "secondary-fixed": "#acedff",
-            "on-tertiary-container": "#00311f",
-            "surface-dim": "#0f131d",
-            "on-tertiary": "#003824"
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
           },
-          "borderRadius": {
-            "DEFAULT": "0.25rem",
-            "lg": "0.5rem",
-            "xl": "0.75rem",
-            "full": "9999px"
-          },
-          "fontFamily": {
-            "headline": ["Plus Jakarta Sans"],
-            "display": ["Plus Jakarta Sans"],
-            "body": ["Inter"],
-            "label": ["Public Sans"]
+          colors: {
+            brand: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+              700: '#6d28d9',
+            }
           }
-        },
-      },
+        }
+      }
     }
   </script>
-<style>
-    .material-symbols-outlined {
-      font-variation-settings: 'FILL' 0, 'wght' 350, 'GRAD' 0, 'opsz' 24;
-      display: inline-block;
-      vertical-align: middle;
-      line-height: 1;
+  <style>
+    .glass-header {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
     }
-    .neon-glow-primary {
-      filter: drop-shadow(0 0 16px rgba(183, 109, 255, 0.45));
+    .glass-card {
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(32px);
+      -webkit-backdrop-filter: blur(32px);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
     }
-    .neon-box-glow {
-      box-shadow: 0 0 35px -5px rgba(168, 85, 247, 0.15), 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+    .glass-dock {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.7) inset;
+    }
+    .glass-subtle {
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+    .ambient-pill {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.05);
+    }
+    @keyframes subtlePulse {
+      0%, 100% { transform: scale(1); opacity: 0.95; }
+      50% { transform: scale(1.03); opacity: 1; }
+    }
+    .pulse-glow {
+      animation: subtlePulse 4s ease-in-out infinite;
     }
   </style>
 </head>
-<body class="bg-background text-on-surface font-body min-h-screen relative selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
-<!-- Fixed Atmospheric Wallpaper Background -->
-<div class="fixed inset-0 pointer-events-none z-0">
-<img alt="Atmospheric dark pine forest wallpaper" class="w-full h-full object-cover object-center scale-105 transform duration-1000" src="https://lh3.googleusercontent.com/aida/AEtjO1XgPVt_FPb9IMnj_kI8XEpRwb6Y4N8ozFZYBlCVLhRmw_Y99M_7Ux2FiQdmqFdnR45sn4xfmvYlQYFEgie_fnJ9k_4zL5W3kSN4ZFqhaEL6o5zMmBchhcUk0imYLAtBtc5p4oqDqNYNahEZLELqFn3xEU2V1LcRj1bzyHEDeUx3RYPc14kKqP9tazRYQ2d0rIp9eotREy3wOAj4zwsMMAKkw3Ii_SrThWywdKaYZ_-E1f06LLp1UGq87Fs"/>
-<!-- Vignette & Tint Overlays -->
-<div class="absolute inset-0 bg-background/50 backdrop-blur-[1px]"></div>
-<div class="absolute inset-0 bg-radial-gradient from-transparent via-background/40 to-background/90 mix-blend-multiply"></div>
-<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/60"></div>
-</div>
-<!-- TOP APP BAR -->
-<header class="fixed top-0 left-0 w-full z-40 bg-surface-container-lowest/60 backdrop-blur-md shadow-sm">
-<div class="flex justify-between items-center w-full px-6 py-3 max-w-7xl mx-auto">
-<!-- Brand & Left Navigation Cluster -->
-<div class="flex items-center gap-8">
-<a class="flex items-center gap-2 group" href="#">
-<span class="w-2.5 h-2.5 rounded-full bg-tertiary shadow-[0_0_8px_rgba(78,222,163,0.8)] animate-pulse"></span>
-<span class="font-headline text-lg font-bold tracking-wider text-primary">VibeSpace</span>
-</a>
-<!-- Desktop Navigation Links -->
-<nav class="hidden md:flex items-center gap-6 font-headline text-sm">
-<!-- Active: Focus -->
-<a class="text-primary font-semibold border-b-2 border-primary pb-1 flex items-center gap-1.5 transition-all" href="#">
-<span>Focus</span>
-</a>
-<!-- Inactive Links -->
-<a class="text-on-surface-variant hover:text-on-surface transition-colors pb-1" href="#">
-<span>Sounds</span>
-</a>
-<a class="text-on-surface-variant hover:text-on-surface transition-colors pb-1" href="#">
-<span>Spaces</span>
-</a>
-<a class="text-on-surface-variant hover:text-on-surface transition-colors pb-1" href="#">
-<span>Analytics</span>
-</a>
-</nav>
-</div>
-<!-- Right Header Actions & Live Clock -->
-<div class="flex items-center gap-4">
-<!-- Live Workspace Clock -->
-<div class="hidden lg:flex flex-col items-end mr-2 text-right">
-<div class="font-headline text-xs font-semibold text-white/90 tracking-wide">05:30</div>
-<div class="text-[10px] text-on-surface-variant/70 tracking-wider uppercase font-medium">Thursday, Sep 17</div>
-</div>
-<div class="hidden sm:block h-5 w-[1px] bg-outline-variant/30"></div>
-<!-- Shortcuts Pill Button -->
-<button class="hidden sm:inline-flex items-center gap-1 text-xs text-on-surface-variant hover:text-on-surface bg-surface-container/60 hover:bg-surface-container-high/60 border border-outline-variant/30 px-2.5 py-1 rounded-full transition-all duration-200">
-<span class="text-[11px] font-mono opacity-80">Shortcuts</span>
-<span class="font-bold text-[10px] bg-white/10 rounded px-1">?</span>
-</button>
-<!-- Zen Mode Button -->
-<button class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 hover:bg-primary/20 text-primary border border-primary/25 font-headline text-xs font-medium tracking-wide transition-all duration-200 active:scale-95">
-<span class="material-symbols-outlined text-[16px]">self_improvement</span>
-<span>Zen Mode</span>
-</button>
-<!-- Trailing Icon Actions -->
-<div class="flex items-center gap-1">
-<button class="p-2 rounded-full text-on-surface-variant hover:text-primary transition-all duration-200 active:scale-95 hover:bg-surface-container-high/50" title="Schedule">
-<span class="material-symbols-outlined text-[20px]">schedule</span>
-</button>
-<button class="p-2 rounded-full text-on-surface-variant hover:text-primary transition-all duration-200 active:scale-95 hover:bg-surface-container-high/50 relative" title="Notifications">
-<span class="material-symbols-outlined text-[20px]">notifications</span>
-<span class="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-secondary rounded-full shadow-[0_0_6px_#4cd7f6]"></span>
-</button>
-<button class="p-2 rounded-full text-on-surface-variant hover:text-primary transition-all duration-200 active:scale-95 hover:bg-surface-container-high/50" title="Settings">
-<span class="material-symbols-outlined text-[20px]">settings</span>
-</button>
-</div>
-<!-- User Profile Avatar -->
-<div class="pl-1">
-<div class="w-8 h-8 rounded-full ring-1 ring-primary/40 p-[1px] bg-gradient-to-tr from-primary to-secondary cursor-pointer hover:ring-2 hover:ring-primary transition-all">
-<img alt="User Profile Avatar" class="w-full h-full rounded-full object-cover" data-alt="A tranquil minimalist portrait profile photo of a modern user against deep violet moody backdrop, cinematic soft studio edge light, high resolution." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr8KXI6YlTwgN9hjYeFWfFZ0-2PqmYJivisjglMIwsuY5YnFuUZMpQwt-hSDhzaH7ct1o7fZnVefDqw_VBI-tVgzB8S2unc7c3jozoyJR23kZfswM1vJOKwouYcBKFEZy8CLGgBoALZTCYtMq93lAcgbWUDrDKDSJHDVlwqKtZXkdV5Hb7vBNUQBpOKZV5XfKqin-vPV1utOSbMOmprm1aaeqC7uFycfCbFcVpPEtV25lt9joYgFrr-jBmk68w4YRuhPpk4O4KZII"/>
-</div>
-</div>
-</div>
-</div>
-</header>
-<!-- MAIN CANVAS -->
-<main class="relative z-10 flex min-h-screen flex-col items-center justify-center pt-16 pb-28 px-4">
-<!-- Ambient Sound Pill (Top Center subtle context indicator) -->
-<div class="mb-6 flex items-center gap-2.5 px-3.5 py-1 rounded-full bg-surface-container-lowest/60 backdrop-blur-md border border-white/10 text-xs text-on-surface-variant/90 shadow-sm animate-fade-in">
-<span class="material-symbols-outlined text-secondary text-[16px] animate-pulse">waves</span>
-<span class="font-medium text-white/80">Ambient Sound:</span>
-<span class="text-secondary-fixed">Misty Pine Rainfall</span>
-<span class="text-white/30">•</span>
-<span class="text-[11px] text-white/60">45% Vol</span>
-</div>
-<!-- CENTER FOCUS CARD (Active Pomodoro Running State SCR-02) -->
-<div class="w-full max-w-[460px] rounded-3xl bg-surface-container/60 backdrop-blur-2xl border border-white/10 p-8 sm:p-10 flex flex-col items-center neon-box-glow relative overflow-hidden group transition-all duration-500">
-<!-- Subtle internal decorative glow blurs -->
-<div class="absolute -top-24 -left-24 w-48 h-48 bg-primary/15 rounded-full blur-3xl pointer-events-none"></div>
-<div class="absolute -bottom-24 -right-24 w-48 h-48 bg-secondary/15 rounded-full blur-3xl pointer-events-none"></div>
-<!-- Top Status Badge -->
-<div class="relative z-10 mb-8 inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/25 shadow-[0_0_20px_rgba(183,109,255,0.2)]">
-<span class="relative flex h-2 w-2">
-<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
-<span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary shadow-[0_0_8px_#4edea3]"></span>
-</span>
-<span class="font-headline text-xs font-semibold tracking-wide text-primary">
-          Focusing (Interval 1 of 4) • Deep Work
-        </span>
-</div>
-<!-- Circular Progress Ring & Running Countdown -->
-<div class="relative z-10 w-[290px] h-[290px] flex items-center justify-center my-2">
-<svg class="w-full h-full -rotate-90 transform" viewbox="0 0 300 300">
-<defs>
-<!-- Glowing Neon Gradient for the Active Stroke -->
-<lineargradient id="pomodoroGlowGradient" x1="0%" x2="100%" y1="0%" y2="100%">
-<stop offset="0%" stop-color="#a855f7"></stop>
-<stop offset="60%" stop-color="#c084fc"></stop>
-<stop offset="100%" stop-color="#06b6d4"></stop>
-</lineargradient>
-<!-- Drop shadow glow filter for SVG stroke -->
-<filter height="140%" id="svgGlow" width="140%" x="-20%" y="-20%">
-<fedropshadow dx="0" dy="0" flood-color="#a855f7" flood-opacity="0.6" stddeviation="6"></fedropshadow>
-<fedropshadow dx="0" dy="0" flood-color="#06b6d4" flood-opacity="0.3" stddeviation="12"></fedropshadow>
-</filter>
-</defs>
-<!-- Background Ring Track -->
-<circle cx="150" cy="150" fill="transparent" r="124" stroke="rgba(255, 255, 255, 0.08)" stroke-width="7"></circle>
-<!-- Active Elapsed Progress Ring (Circumference = 2 * π * 124 ≈ 779.11) -->
-<!-- Elapsed: ~25.2% (dashoffset ≈ 779.11 * (1 - 0.252) ≈ 582.7) -->
-<circle class="transition-all duration-1000 ease-linear" cx="150" cy="150" fill="transparent" filter="url(#svgGlow)" r="124" stroke="url(#pomodoroGlowGradient)" stroke-dasharray="779.11" stroke-dashoffset="582.77" stroke-linecap="round" stroke-width="8"></circle>
-</svg>
-<!-- Timer Numeric & Session Subtext inside Circle -->
-<div class="absolute inset-0 flex flex-col items-center justify-center text-center select-none pointer-events-none">
-<div class="font-headline font-bold text-6xl tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
-            18:42
+<body class="h-full w-full overflow-hidden font-sans text-slate-800 select-none bg-slate-100 relative">
+
+  <!-- Full-bleed daylight misty mountain landscape background -->
+  <div class="absolute inset-0 z-0 bg-cover bg-center transition-all duration-700" style="background-image: url('https://lh3.googleusercontent.com/aida/AEtjO1WQkNIUFf-ZqFdTwJImKDH4KRRLswVndvQWFcKpgptbNZhufoII1vKSjLk3E-_uOoXnHQdWRBzDuCJP5hcU0GftRFoHLykYsMBvAb5cbUJFdzHVIObnsit2ysb5Pn6Zr7CZ56Ps6EMm8FFGuo4TiIuOzzaA5x_NB9UnepIr_ljnk8-4yo7EAaSvwOeYML95FMEXr4EZzfOCHJK7Wy5MMmPp92Qh0cuLANyThwkqRkFxaowlhzdA2w_3wg');">
+    <!-- Soft luminous daylight overlay gradient for optimal Scandinavian aesthetic & card contrast -->
+    <div class="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-white/40 pointer-events-none"></div>
+  </div>
+
+  <!-- Main Container -->
+  <div class="relative z-10 flex flex-col h-full w-full justify-between">
+
+    <!-- Top Navigation Header in Luminous Pearl-White Glass -->
+    <header class="glass-header w-full px-8 py-3.5 flex items-center justify-between z-40 transition-all">
+      <!-- Left: Logo & Navigation Tabs -->
+      <div class="flex items-center gap-10">
+        <!-- Logo -->
+        <div class="flex items-center gap-2.5 cursor-pointer group">
+          <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-brand-600 to-indigo-500 flex items-center justify-center shadow-md shadow-brand-500/25 group-hover:scale-105 transition-transform">
+            <span class="material-symbols-outlined text-white text-lg">spa</span>
           </div>
-<div class="mt-2 text-[11px] font-label font-semibold tracking-[0.25em] text-white/50 uppercase">
-            Session 1 of 4
+          <span class="font-extrabold text-xl tracking-tight text-slate-900 flex items-center gap-1.5">
+            VibeSpace
+            <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block shadow-[0_0_8px_rgba(16,185,129,0.6)]"></span>
+          </span>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <nav class="hidden md:flex items-center gap-1 bg-slate-100/70 p-1 rounded-full border border-white/60">
+          <a href="#" class="px-4 py-1.5 rounded-full text-xs font-semibold text-brand-700 bg-white shadow-sm transition-all flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span>
+            Focus
+          </a>
+          <a href="#" class="px-4 py-1.5 rounded-full text-xs font-medium text-slate-600 hover:text-slate-900 transition-colors">
+            Sounds
+          </a>
+          <a href="#" class="px-4 py-1.5 rounded-full text-xs font-medium text-slate-600 hover:text-slate-900 transition-colors">
+            Spaces
+          </a>
+          <a href="#" class="px-4 py-1.5 rounded-full text-xs font-medium text-slate-600 hover:text-slate-900 transition-colors">
+            Analytics
+          </a>
+        </nav>
+      </div>
+
+      <!-- Center-Right Live Time & Day info -->
+      <div class="hidden lg:flex items-center gap-3">
+        <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-white/60 border border-white/80 text-xs font-medium text-slate-600">
+          <span class="material-symbols-outlined text-slate-400 text-sm">schedule</span>
+          <span class="font-bold text-slate-900 font-mono text-sm">09:47</span>
+          <span class="text-slate-300">•</span>
+          <span>Thursday, Sep 17</span>
+        </div>
+      </div>
+
+      <!-- Right Actions: Shortcuts, Ambient audio pill, Settings & Profile -->
+      <div class="flex items-center gap-3">
+        <!-- Keyboard shortcuts button -->
+        <button class="px-3.5 py-1.5 rounded-full bg-white/70 hover:bg-white text-slate-700 border border-white/90 text-xs font-medium flex items-center gap-1.5 shadow-sm transition-all hover:shadow">
+          <span class="material-symbols-outlined text-slate-500 text-sm">keyboard</span>
+          <span>Shortcuts</span>
+          <kbd class="px-1.5 py-0.5 text-[10px] font-mono bg-slate-100 text-slate-500 rounded border border-slate-200">⌘K</kbd>
+        </button>
+
+        <!-- Zen Mode Action -->
+        <button class="px-3.5 py-1.5 rounded-full bg-brand-50 hover:bg-brand-100 text-brand-700 border border-brand-200/80 text-xs font-semibold flex items-center gap-1.5 transition-all">
+          <span class="material-symbols-outlined text-brand-600 text-sm">self_improvement</span>
+          <span>Zen Mode</span>
+        </button>
+
+        <div class="h-5 w-px bg-slate-200/70 mx-1"></div>
+
+        <!-- Help & Settings Icons -->
+        <button class="w-8 h-8 rounded-full flex items-center justify-center text-slate-500 hover:text-slate-800 hover:bg-white/80 transition-colors">
+          <span class="material-symbols-outlined text-lg">help_outline</span>
+        </button>
+        <button class="w-8 h-8 rounded-full flex items-center justify-center text-slate-500 hover:text-slate-800 hover:bg-white/80 transition-colors">
+          <span class="material-symbols-outlined text-lg">settings</span>
+        </button>
+
+        <!-- Profile Avatar -->
+        <button class="w-8 h-8 rounded-full overflow-hidden ring-2 ring-white shadow-sm ml-1 hover:ring-brand-400 transition-all">
+          <div class="w-full h-full bg-gradient-to-tr from-amber-400 to-rose-400 flex items-center justify-center text-white font-bold text-xs">
+            JD
           </div>
-<div class="mt-1 flex items-center gap-1 text-[11px] text-tertiary-fixed-dim/90 font-medium tracking-wide">
-<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">eco</span>
-<span>Flow State Active</span>
-</div>
-</div>
-</div>
-<!-- Control Action Buttons -->
-<div class="relative z-10 mt-6 flex items-center justify-center gap-4 w-full">
-<!-- Reset Action Button -->
-<button class="w-12 h-12 rounded-full flex items-center justify-center bg-white/5 hover:bg-white/10 border border-white/10 text-white/80 hover:text-white transition-all duration-200 active:scale-90 shadow-md group/btn" title="Reset Session">
-<span class="material-symbols-outlined text-[21px] group-hover/btn:-rotate-45 transition-transform duration-300">replay</span>
-</button>
-<!-- Main Button: Glowing Frosted Pause Button -->
-<button class="px-8 py-3.5 rounded-full bg-gradient-to-r from-purple-500 via-primary-container to-indigo-600 text-white font-headline font-medium shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 hover:brightness-110 flex items-center gap-2.5 transition-all duration-200 active:scale-95">
-<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">pause</span>
-<span class="tracking-wide text-sm font-semibold">Pause</span>
-</button>
-<!-- Skip Action Button -->
-<button class="w-12 h-12 rounded-full flex items-center justify-center bg-white/5 hover:bg-white/10 border border-white/10 text-white/80 hover:text-white transition-all duration-200 active:scale-90 shadow-md group/skip" title="Skip Session">
-<span class="material-symbols-outlined text-[21px] group-hover/skip:translate-x-0.5 transition-transform duration-200">skip_next</span>
-</button>
-</div>
-<!-- Session Indicator Dots -->
-<div class="relative z-10 mt-8 flex items-center gap-3">
-<!-- Dot 1: Active Glowing Filled Dot with pulsing ring -->
-<div class="relative flex items-center justify-center">
-<div class="w-3 h-3 rounded-full bg-primary-container shadow-[0_0_12px_#b76dff]"></div>
-<div class="absolute -inset-1 rounded-full border border-primary/50 animate-ping opacity-60"></div>
-</div>
-<!-- Dot 2: Hollow Frosted Ring -->
-<div class="w-2.5 h-2.5 rounded-full border border-white/30 bg-white/5"></div>
-<!-- Dot 3: Hollow Frosted Ring -->
-<div class="w-2.5 h-2.5 rounded-full border border-white/30 bg-white/5"></div>
-<!-- Dot 4: Hollow Frosted Ring -->
-<div class="w-2.5 h-2.5 rounded-full border border-white/30 bg-white/5"></div>
-</div>
-<!-- Current Goal / Focus Objective Sub-card -->
-<div class="relative z-10 mt-6 pt-5 border-t border-white/10 w-full flex items-center justify-between text-xs text-on-surface-variant/80">
-<div class="flex items-center gap-2 truncate pr-2">
-<span class="material-symbols-outlined text-primary text-[17px]">task_alt</span>
-<span class="text-white/90 truncate font-medium">Design System Refinement</span>
-</div>
-<button class="text-[11px] text-secondary hover:text-secondary-fixed transition-colors flex items-center gap-0.5 font-medium shrink-0">
-<span>Edit</span>
-<span class="material-symbols-outlined text-[13px]">chevron_right</span>
-</button>
-</div>
-</div>
-<!-- Quick Zen Advice Quote -->
-<p class="mt-6 text-xs text-white/40 tracking-wider text-center max-w-sm italic">
-      "Deep in the stillness, clarity emerges like stars between the pines."
-    </p>
-</main>
-<!-- FLOATING DOCK (BottomNavBar component) -->
-<nav class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 rounded-full border border-outline-variant/40 px-4 py-2 bg-surface-container/70 backdrop-blur-xl shadow-2xl font-label text-xs tracking-tight">
-<!-- Music -->
-<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:text-on-surface hover:text-secondary hover:bg-surface-bright/40 rounded-full transition-all duration-200 active:scale-90 group" href="#">
-<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">music_note</span>
-<span class="mt-0.5 font-medium text-[11px]">Music</span>
-</a>
-<!-- Ambience (Active sound state highlight) -->
-<a class="flex flex-col items-center justify-center text-primary bg-primary/10 rounded-full px-3 py-1.5 hover:text-secondary hover:bg-surface-bright/40 transition-all duration-200 active:scale-90 group relative" href="#">
-<span class="material-symbols-outlined text-[20px] text-primary group-hover:scale-110 transition-transform">graphic_eq</span>
-<span class="mt-0.5 font-medium text-[11px]">Ambience</span>
-<span class="absolute top-1 right-2 w-1.5 h-1.5 bg-tertiary rounded-full shadow-[0_0_6px_#4edea3]"></span>
-</a>
-<!-- Tasks (with badge '3') -->
-<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:text-on-surface hover:text-secondary hover:bg-surface-bright/40 rounded-full transition-all duration-200 active:scale-90 group relative" href="#">
-<div class="relative">
-<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">check_circle</span>
-<span class="absolute -top-1 -right-2.5 px-1.5 py-0.2 min-w-[15px] h-[15px] flex items-center justify-center text-[9px] font-bold bg-primary text-on-primary rounded-full shadow-sm">
-          3
+        </button>
+      </div>
+    </header>
+
+    <!-- Top floating ambient sound indicator banner -->
+    <div class="flex justify-center -mt-2">
+      <div class="ambient-pill px-4 py-1.5 rounded-full flex items-center gap-2 text-xs text-slate-700 shadow-sm animate-fade-in">
+        <span class="flex h-2 w-2 relative">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
         </span>
-</div>
-<span class="mt-0.5 font-medium text-[11px]">Tasks</span>
-</a>
-<!-- Wallpaper -->
-<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:text-on-surface hover:text-secondary hover:bg-surface-bright/40 rounded-full transition-all duration-200 active:scale-90 group" href="#">
-<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">wallpaper</span>
-<span class="mt-0.5 font-medium text-[11px]">Wallpaper</span>
-</a>
-<!-- Fullscreen -->
-<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:text-on-surface hover:text-secondary hover:bg-surface-bright/40 rounded-full transition-all duration-200 active:scale-90 group">
-<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">fullscreen</span>
-<span class="mt-0.5 font-medium text-[11px]">Fullscreen</span>
-</button>
-</nav>
-</body></html>
+        <span class="material-symbols-outlined text-brand-600 text-sm">graphic_eq</span>
+        <span class="font-medium text-slate-900">Kyoto Morning Birds & Mountain Mist</span>
+        <span class="text-slate-300">|</span>
+        <span class="text-slate-500">45% Volume</span>
+      </div>
+    </div>
+
+    <!-- Center Hero: Pomodoro Active Running State Card -->
+    <main class="flex-1 flex items-center justify-center p-4">
+      <div class="glass-card rounded-[32px] p-9 w-[480px] max-w-full text-center flex flex-col items-center gap-6 relative overflow-hidden transition-all duration-300 hover:shadow-[0_30px_70px_-15px_rgba(15,23,42,0.16)]">
+        
+        <!-- Subtle Top Glow Highlight inside card -->
+        <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-64 h-32 bg-gradient-to-b from-brand-300/30 via-indigo-200/20 to-transparent blur-2xl pointer-events-none"></div>
+
+        <!-- Session Badge Header -->
+        <div class="flex items-center justify-center">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-50/90 border border-brand-200/70 shadow-xs">
+            <span class="w-2 h-2 rounded-full bg-brand-600 animate-pulse"></span>
+            <span class="text-[11px] font-bold tracking-wider uppercase text-brand-700">Focus Session • Deep Work</span>
+          </div>
+        </div>
+
+        <!-- Active Circular SVG Progress Ring with 18:42 Digits -->
+        <div class="relative w-[260px] h-[260px] flex items-center justify-center my-1">
+          <!-- Ambient Glow behind ring -->
+          <div class="absolute inset-4 rounded-full bg-gradient-to-tr from-brand-500/10 to-sky-400/10 blur-xl pointer-events-none"></div>
+
+          <!-- SVG Circular Progress Ring (240px diameter, r=105, cx=130, cy=130, circumference=2*pi*105 ≈ 659.73) -->
+          <!-- 75% elapsed progress: stroke-dasharray="659.73", stroke-dashoffset = 659.73 * (1 - 0.75) = 164.93 -->
+          <svg class="w-[260px] h-[260px] transform -rotate-90 relative z-10" viewBox="0 0 260 260">
+            <defs>
+              <linearGradient id="lightProgressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#7c3aed" />
+                <stop offset="50%" stop-color="#a855f7" />
+                <stop offset="100%" stop-color="#0284c7" />
+              </linearGradient>
+              <filter id="thumbGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#0284c7" flood-opacity="0.8"/>
+              </filter>
+            </defs>
+
+            <!-- Background Track -->
+            <circle
+              cx="130"
+              cy="130"
+              r="105"
+              fill="transparent"
+              stroke="#e2e8f0"
+              stroke-width="10"
+              stroke-linecap="round"
+              opacity="0.8"
+            />
+
+            <!-- Progress Active Arc (75% filled) -->
+            <circle
+              cx="130"
+              cy="130"
+              r="105"
+              fill="transparent"
+              stroke="url(#lightProgressGradient)"
+              stroke-width="11"
+              stroke-dasharray="659.73"
+              stroke-dashoffset="164.93"
+              stroke-linecap="round"
+              class="transition-all duration-1000 ease-out"
+            />
+
+            <!-- Thumb indicator at 75% point (270 degrees clockwise from 12 o'clock = 9 o'clock position on unrotated circle) -->
+            <!-- With -rotate-90: 12 o'clock is start. 75% is 9 o'clock: x = 130 + 105*cos(270 deg) = 130, y = 130 + 105*sin(270 deg) = 25 -->
+            <circle
+              cx="130"
+              cy="25"
+              r="7"
+              fill="#ffffff"
+              stroke="#0284c7"
+              stroke-width="3"
+              filter="url(#thumbGlow)"
+            />
+          </svg>
+
+          <!-- Inside Center Details: Time Digits & Session Status -->
+          <div class="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none">
+            <!-- Time Digits -->
+            <span class="font-mono text-[56px] font-extrabold tracking-tight text-slate-900 leading-none drop-shadow-xs">
+              18:42
+            </span>
+            <!-- Subtitle info -->
+            <span class="text-[11px] font-bold tracking-widest text-slate-500 uppercase mt-2">
+              SESSION 1 OF 4
+            </span>
+            <div class="flex items-center gap-1.5 mt-1 text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+              Flow State Active
+            </div>
+          </div>
+        </div>
+
+        <!-- Session Progress Dots (Dot 1 filled with vivid purple, dots 2-4 subtle rings) -->
+        <div class="flex items-center justify-center gap-2.5">
+          <div class="w-7 h-2 rounded-full bg-gradient-to-r from-brand-600 to-indigo-600 shadow-sm shadow-brand-500/30"></div>
+          <div class="w-2 h-2 rounded-full bg-slate-200 border border-slate-300"></div>
+          <div class="w-2 h-2 rounded-full bg-slate-200 border border-slate-300"></div>
+          <div class="w-2 h-2 rounded-full bg-slate-200 border border-slate-300"></div>
+        </div>
+
+        <!-- Controls: Prominent Pause flanked by Reset and Skip Session buttons -->
+        <div class="flex items-center justify-center gap-6 mt-1 w-full">
+          <!-- Reset Button -->
+          <button title="Reset Interval" class="w-12 h-12 rounded-full bg-white/90 hover:bg-white text-slate-600 hover:text-slate-900 border border-slate-200/90 shadow-sm hover:shadow transition-all flex items-center justify-center group active:scale-95">
+            <span class="material-symbols-outlined text-xl group-hover:-rotate-90 transition-transform duration-200">replay</span>
+          </button>
+
+          <!-- Primary Pause Button with vivid gradient & glow -->
+          <button title="Pause Focus Flow" class="w-16 h-16 rounded-full bg-gradient-to-tr from-brand-700 via-brand-600 to-indigo-600 text-white shadow-xl shadow-brand-600/35 hover:shadow-brand-600/50 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center group">
+            <span class="material-symbols-outlined text-3xl transition-transform group-hover:scale-110">pause</span>
+          </button>
+
+          <!-- Skip Session Button -->
+          <button title="Skip Session / Interval" class="w-12 h-12 rounded-full bg-white/90 hover:bg-white text-slate-600 hover:text-slate-900 border border-slate-200/90 shadow-sm hover:shadow transition-all flex items-center justify-center group active:scale-95">
+            <span class="material-symbols-outlined text-xl group-hover:translate-x-0.5 transition-transform duration-200">skip_next</span>
+          </button>
+        </div>
+
+        <!-- Active Focus Task Mini Pill at bottom of card -->
+        <div class="w-full pt-3 border-t border-slate-200/70 flex items-center justify-between text-xs text-slate-600">
+          <div class="flex items-center gap-2 truncate">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            <span class="font-medium text-slate-800 truncate">Quarterly Design Systems Architecture</span>
+          </div>
+          <button class="text-brand-600 hover:text-brand-700 font-semibold text-[11px] flex items-center gap-0.5 shrink-0 hover:underline">
+            Edit
+            <span class="material-symbols-outlined text-xs">arrow_forward_ios</span>
+          </button>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Bottom Zen Quote & Footer Section -->
+    <div class="flex flex-col items-center pb-24 relative z-30">
+      <p class="text-xs font-medium text-slate-600/90 tracking-wide mb-3 px-4 py-1.5 rounded-full bg-white/60 backdrop-blur-md border border-white/80 shadow-xs">
+        &ldquo;Stillness is not the absence of energy, but energy gathered.&rdquo; &mdash; Kyoto Zen Morning
+      </p>
+    </div>
+
+    <!-- Bottom Center: Floating Luminous Pearl-White Frosted Dock -->
+    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+      <div class="glass-dock rounded-full px-4 py-2 flex items-center gap-2">
+        <!-- Music Option -->
+        <button class="flex items-center gap-2 px-3.5 py-2 rounded-full text-slate-600 hover:text-slate-900 hover:bg-white/60 text-xs font-medium transition-all group">
+          <span class="material-symbols-outlined text-lg text-slate-500 group-hover:text-slate-800">music_note</span>
+          <span class="hidden sm:inline">Music</span>
+        </button>
+
+        <!-- Ambient Sound Mixer (Active Tool Indicator) -->
+        <button class="flex items-center gap-2 px-4 py-2 rounded-full bg-white text-brand-700 shadow-sm border border-brand-100 text-xs font-semibold transition-all">
+          <span class="material-symbols-outlined text-lg text-brand-600">tune</span>
+          <span class="hidden sm:inline">Sound Mixer</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.8)]"></span>
+        </button>
+
+        <!-- Daily Tasks (with badge) -->
+        <button class="flex items-center gap-2 px-3.5 py-2 rounded-full text-slate-600 hover:text-slate-900 hover:bg-white/60 text-xs font-medium transition-all group relative">
+          <span class="material-symbols-outlined text-lg text-slate-500 group-hover:text-slate-800">check_circle</span>
+          <span class="hidden sm:inline">Daily Tasks</span>
+          <span class="px-1.5 py-0.2 text-[10px] font-bold bg-brand-600 text-white rounded-full">3</span>
+        </button>
+
+        <!-- Wallpaper Switcher -->
+        <button class="flex items-center gap-2 px-3.5 py-2 rounded-full text-slate-600 hover:text-slate-900 hover:bg-white/60 text-xs font-medium transition-all group">
+          <span class="material-symbols-outlined text-lg text-slate-500 group-hover:text-slate-800">wallpaper</span>
+          <span class="hidden sm:inline">Wallpaper</span>
+        </button>
+
+        <div class="h-4 w-px bg-slate-300/70 mx-1"></div>
+
+        <!-- Fullscreen Mode -->
+        <button class="flex items-center gap-2 px-3 py-2 rounded-full text-slate-600 hover:text-slate-900 hover:bg-white/60 text-xs font-medium transition-all group">
+          <span class="material-symbols-outlined text-lg text-slate-500 group-hover:text-slate-800">fullscreen</span>
+          <span class="sr-only sm:not-sr-only sm:text-xs">Fullscreen</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
