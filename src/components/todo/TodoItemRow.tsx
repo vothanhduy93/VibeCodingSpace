@@ -1,6 +1,7 @@
 import React from 'react';
 import { Check, Trash2 } from 'lucide-react';
 import { TodoItem, useTodoStore } from '@/stores/useTodoStore';
+import { useTranslation } from '@/stores/useLanguageStore';
 
 interface TodoItemRowProps {
   todo: TodoItem;
@@ -8,11 +9,18 @@ interface TodoItemRowProps {
 
 export const TodoItemRow: React.FC<TodoItemRowProps> = ({ todo }) => {
   const { toggleTodo, deleteTodo } = useTodoStore();
+  const { t } = useTranslation();
 
   const priorityBadges = {
     high: 'bg-amber-50 text-amber-700 border-amber-200/70',
     normal: 'bg-slate-100 text-slate-600 border-slate-200/60',
     low: 'bg-sky-50 text-sky-700 border-sky-200/70',
+  };
+
+  const priorityLabels = {
+    high: t.todo.priorityHigh,
+    normal: t.todo.priorityNormal,
+    low: t.todo.priorityLow,
   };
 
   return (
@@ -33,7 +41,7 @@ export const TodoItemRow: React.FC<TodoItemRowProps> = ({ todo }) => {
               ? 'bg-emerald-500 text-white shadow-xs'
               : 'border-2 border-slate-300 hover:border-primary group-hover:bg-slate-50'
           }`}
-          aria-label={todo.isCompleted ? 'Mark incomplete' : 'Mark complete'}
+          aria-label={todo.isCompleted ? t.pomodoro.pause : t.pomodoro.startFocus}
         >
           {todo.isCompleted && <Check className="w-3 h-3 stroke-[3]" />}
         </button>
@@ -57,7 +65,7 @@ export const TodoItemRow: React.FC<TodoItemRowProps> = ({ todo }) => {
                 priorityBadges[todo.priority]
               }`}
             >
-              {todo.priority}
+              {priorityLabels[todo.priority]}
             </span>
 
             {/* Pomodoro Estimate */}
@@ -70,7 +78,7 @@ export const TodoItemRow: React.FC<TodoItemRowProps> = ({ todo }) => {
             {/* Completed Time */}
             {todo.completedAt && (
               <span className="text-[10px] text-emerald-600 font-medium">
-                Done at {todo.completedAt}
+                {t.todo.completedAtPrefix} {todo.completedAt}
               </span>
             )}
           </div>
@@ -81,8 +89,8 @@ export const TodoItemRow: React.FC<TodoItemRowProps> = ({ todo }) => {
       <button
         onClick={() => deleteTodo(todo.id)}
         className="opacity-0 group-hover:opacity-100 p-1 text-zen-subtle hover:text-rose-500 rounded-lg hover:bg-rose-50 transition-all cursor-pointer flex-shrink-0"
-        title="Delete task"
-        aria-label="Delete task"
+        title={t.common.delete}
+        aria-label={t.common.delete}
       >
         <Trash2 className="w-3.5 h-3.5" />
       </button>

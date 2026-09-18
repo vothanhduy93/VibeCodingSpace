@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Settings2, Save } from 'lucide-react';
 import { GlassModal, GlassButton, GlassSlider } from '@/components/ui';
 import { usePomodoroStore } from '@/stores/usePomodoroStore';
+import { useTranslation } from '@/stores/useLanguageStore';
 
 interface PomodoroSettingsModalProps {
   isOpen: boolean;
@@ -12,6 +13,7 @@ export const PomodoroSettingsModal: React.FC<PomodoroSettingsModalProps> = ({
   isOpen,
   onClose,
 }) => {
+  const { t } = useTranslation();
   const { settings, updateSettings } = usePomodoroStore();
 
   const [focusTime, setFocusTime] = useState(settings.focusDuration);
@@ -37,41 +39,41 @@ export const PomodoroSettingsModal: React.FC<PomodoroSettingsModalProps> = ({
       onClose={onClose}
       maxWidth="md"
       icon={<Settings2 className="w-5 h-5 text-primary" />}
-      title="Pomodoro Preferences"
-      subtitle="Customize your focus & break intervals"
+      title={t.pomodoro.settingsTitle}
+      subtitle={t.pomodoro.openSettings}
     >
       <div className="flex flex-col gap-6">
         {/* Sliders */}
         <div className="glass-tier3 p-4 sm:p-5 rounded-2xl border border-slate-200/80 flex flex-col gap-4">
           <GlassSlider
-            label="Focus Interval"
+            label={t.pomodoro.focusDuration}
             value={focusTime}
             min={1}
             max={60}
             step={1}
-            valueDisplay={`${focusTime} min`}
+            valueDisplay={`${focusTime} ${t.pomodoro.minutesUnit}`}
             onChange={setFocusTime}
             accent="purple"
           />
 
           <GlassSlider
-            label="Short Break Interval"
+            label={t.pomodoro.shortBreakDuration}
             value={shortBreak}
             min={1}
             max={30}
             step={1}
-            valueDisplay={`${shortBreak} min`}
+            valueDisplay={`${shortBreak} ${t.pomodoro.minutesUnit}`}
             onChange={setShortBreak}
             accent="cyan"
           />
 
           <GlassSlider
-            label="Long Break Interval"
+            label={t.pomodoro.longBreakDuration}
             value={longBreak}
             min={1}
             max={45}
             step={1}
-            valueDisplay={`${longBreak} min`}
+            valueDisplay={`${longBreak} ${t.pomodoro.minutesUnit}`}
             onChange={setLongBreak}
             accent="emerald"
           />
@@ -80,7 +82,7 @@ export const PomodoroSettingsModal: React.FC<PomodoroSettingsModalProps> = ({
         {/* Automation Toggles */}
         <div className="glass-tier3 p-4 rounded-2xl border border-slate-200/80 flex flex-col gap-3">
           <label className="flex items-center justify-between text-xs font-medium text-zen-slate cursor-pointer">
-            <span>Auto-start Breaks</span>
+            <span>{t.pomodoro.autoStartBreaks}</span>
             <input
               type="checkbox"
               checked={autoBreaks}
@@ -90,7 +92,7 @@ export const PomodoroSettingsModal: React.FC<PomodoroSettingsModalProps> = ({
           </label>
 
           <label className="flex items-center justify-between text-xs font-medium text-zen-slate cursor-pointer">
-            <span>Auto-start Pomodoros</span>
+            <span>{t.pomodoro.autoStartPomodoros}</span>
             <input
               type="checkbox"
               checked={autoPomodoros}
@@ -103,7 +105,7 @@ export const PomodoroSettingsModal: React.FC<PomodoroSettingsModalProps> = ({
         {/* Footer */}
         <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-200/60">
           <GlassButton variant="ghost" size="sm" onClick={onClose}>
-            Cancel
+            {t.common.cancel}
           </GlassButton>
           <GlassButton
             variant="primary"
@@ -113,7 +115,7 @@ export const PomodoroSettingsModal: React.FC<PomodoroSettingsModalProps> = ({
             glow
           >
             <Save className="w-3.5 h-3.5" />
-            Save Changes
+            {t.common.save}
           </GlassButton>
         </div>
       </div>

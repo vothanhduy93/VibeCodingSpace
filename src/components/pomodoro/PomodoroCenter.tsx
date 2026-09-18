@@ -4,8 +4,10 @@ import { usePomodoroStore } from '@/stores/usePomodoroStore';
 import { PomodoroProgressRing } from './PomodoroProgressRing';
 import { PomodoroSettingsModal } from './PomodoroSettingsModal';
 import { GlassButton } from '@/components/ui';
+import { useTranslation } from '@/stores/useLanguageStore';
 
 export const PomodoroCenter: React.FC = () => {
+  const { t } = useTranslation();
   const {
     mode,
     status,
@@ -44,17 +46,17 @@ export const PomodoroCenter: React.FC = () => {
 
   const modeBadges = {
     focus: {
-      text: 'Focus Session • Deep Work',
+      text: t.pomodoro.focusSession,
       className: 'bg-purple-100/90 text-purple-700 border-purple-200/60',
       dotColor: 'bg-purple-600',
     },
     shortBreak: {
-      text: 'Short Break • Rest & Breathe',
+      text: t.pomodoro.shortBreak,
       className: 'bg-sky-100/90 text-sky-700 border-sky-200/60',
       dotColor: 'bg-sky-600',
     },
     longBreak: {
-      text: 'Long Break • Deep Recharge',
+      text: t.pomodoro.longBreak,
       className: 'bg-emerald-100/90 text-emerald-700 border-emerald-200/60',
       dotColor: 'bg-emerald-600',
     },
@@ -67,8 +69,8 @@ export const PomodoroCenter: React.FC = () => {
         <button
           onClick={() => setIsSettingsOpen(true)}
           className="absolute top-5 right-5 p-2 text-zen-muted hover:text-zen-slate rounded-full hover:bg-white/80 transition-colors cursor-pointer"
-          title="Pomodoro Preferences"
-          aria-label="Settings"
+          title={t.pomodoro.openSettings}
+          aria-label={t.pomodoro.openSettings}
         >
           <Settings className="w-4 h-4" />
         </button>
@@ -92,7 +94,7 @@ export const PomodoroCenter: React.FC = () => {
               {formattedTime}
             </span>
             <span className="font-mono text-[11px] uppercase tracking-widest font-semibold text-zen-muted mt-2">
-              Session {currentSession} of 4
+              {t.pomodoro.sessionCounter(currentSession, 4)}
             </span>
           </div>
         </PomodoroProgressRing>
@@ -125,8 +127,8 @@ export const PomodoroCenter: React.FC = () => {
             variant="secondary"
             size="icon"
             onClick={reset}
-            title="Reset interval"
-            aria-label="Reset interval"
+            title={t.pomodoro.resetTimer}
+            aria-label={t.pomodoro.resetTimer}
             className="w-11 h-11"
           >
             <RotateCcw className="w-4 h-4 text-zen-body" />
@@ -143,12 +145,17 @@ export const PomodoroCenter: React.FC = () => {
             {status === 'running' ? (
               <>
                 <Pause className="w-4 h-4 fill-white" />
-                <span>Pause</span>
+                <span>{t.pomodoro.pause}</span>
+              </>
+            ) : status === 'paused' ? (
+              <>
+                <Play className="w-4 h-4 fill-white ml-0.5" />
+                <span>{t.pomodoro.resume}</span>
               </>
             ) : (
               <>
                 <Play className="w-4 h-4 fill-white ml-0.5" />
-                <span>Start Focus</span>
+                <span>{t.pomodoro.startFocus}</span>
               </>
             )}
           </GlassButton>
@@ -158,8 +165,8 @@ export const PomodoroCenter: React.FC = () => {
             variant="secondary"
             size="icon"
             onClick={skip}
-            title="Skip session"
-            aria-label="Skip session"
+            title={t.pomodoro.skipSession}
+            aria-label={t.pomodoro.skipSession}
             className="w-11 h-11"
           >
             <SkipForward className="w-4 h-4 text-zen-body" />
@@ -169,7 +176,7 @@ export const PomodoroCenter: React.FC = () => {
         {/* Zen Inspirational Quote */}
         <div className="flex items-center gap-1.5 text-[11px] text-zen-muted font-body">
           <Sparkles className="w-3 h-3 text-primary/70" />
-          <span>&ldquo;Quiet the mind, and the soul will speak.&rdquo;</span>
+          <span>{t.pomodoro.quotes[(currentSession - 1) % t.pomodoro.quotes.length]}</span>
         </div>
       </div>
 

@@ -1,9 +1,11 @@
 import React from 'react';
 import { Play, Pause, Maximize2, Disc3 } from 'lucide-react';
 import { useYouTubeStore } from '@/stores/useYouTubeStore';
+import { useTranslation } from '@/stores/useLanguageStore';
 
 export const YouTubePlayerPill: React.FC = () => {
   const { currentTrack, isPlaying, displayMode, togglePlay, setDisplayMode } = useYouTubeStore();
+  const { t } = useTranslation();
 
   if (displayMode !== 'pill') return null;
 
@@ -20,7 +22,7 @@ export const YouTubePlayerPill: React.FC = () => {
 
       {/* Animated Equalizer Sound Bars */}
       {isPlaying && (
-        <div className="flex items-end gap-0.5 h-3.5" title="Playing">
+        <div className="flex items-end gap-0.5 h-3.5" title={t.common.active}>
           <span className="w-1 bg-primary rounded-full animate-[bounce_1s_infinite_100ms] h-2" />
           <span className="w-1 bg-sky-500 rounded-full animate-[bounce_1.2s_infinite_300ms] h-3.5" />
           <span className="w-1 bg-primary rounded-full animate-[bounce_0.8s_infinite_200ms] h-2.5" />
@@ -44,7 +46,7 @@ export const YouTubePlayerPill: React.FC = () => {
         <button
           onClick={togglePlay}
           className="p-1.5 rounded-full bg-primary text-white hover:bg-primary-hover shadow-xs cursor-pointer active:scale-95 transition-transform"
-          aria-label={isPlaying ? 'Pause music' : 'Play music'}
+          aria-label={isPlaying ? t.pomodoro.pause : t.pomodoro.resume}
         >
           {isPlaying ? (
             <Pause className="w-3.5 h-3.5 fill-white" />
@@ -57,8 +59,8 @@ export const YouTubePlayerPill: React.FC = () => {
         <button
           onClick={() => setDisplayMode('miniVideo')}
           className="p-1.5 rounded-full text-zen-muted hover:text-zen-slate hover:bg-white/80 cursor-pointer transition-colors"
-          title="Expand to Mini-Video"
-          aria-label="Expand to Mini-Video"
+          title={t.music.expandTooltip}
+          aria-label={t.music.expandTooltip}
         >
           <Maximize2 className="w-3.5 h-3.5" />
         </button>

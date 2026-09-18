@@ -2,6 +2,7 @@ import React from 'react';
 import { Sliders, X, Volume2, VolumeX, Bell } from 'lucide-react';
 import { GlassButton, GlassSlider } from '@/components/ui';
 import { useSoundMixerStore } from '@/stores/useSoundMixerStore';
+import { useTranslation } from '@/stores/useLanguageStore';
 import { SoundSliderItem } from './SoundSliderItem';
 import { SoundPresetsBar } from './SoundPresetsBar';
 
@@ -11,6 +12,7 @@ interface SoundMixerDrawerProps {
 }
 
 export const SoundMixerDrawer: React.FC<SoundMixerDrawerProps> = ({ isOpen, onClose }) => {
+  const { t, isVietnamese } = useTranslation();
   const {
     channels,
     masterVolume,
@@ -45,14 +47,14 @@ export const SoundMixerDrawer: React.FC<SoundMixerDrawerProps> = ({ isOpen, onCl
               <div>
                 <div className="flex items-center gap-2">
                   <h3 className="font-headline font-bold text-lg text-zen-slate">
-                    Sound Mixer
+                    {t.mixer.title}
                   </h3>
                   <span className="px-2 py-0.5 rounded-full bg-purple-100 text-purple-700 text-[11px] font-semibold">
-                    {activeCount} Active
+                    {t.mixer.activeCount(activeCount)}
                   </span>
                 </div>
                 <p className="text-xs text-zen-muted mt-0.5">
-                  Craft your tranquil soundscape
+                  {t.mixer.subtitle}
                 </p>
               </div>
             </div>
@@ -62,7 +64,7 @@ export const SoundMixerDrawer: React.FC<SoundMixerDrawerProps> = ({ isOpen, onCl
                 variant="icon"
                 size="icon"
                 onClick={toggleMasterMute}
-                title={isMuted ? 'Unmute' : 'Mute master audio'}
+                title={isMuted ? (isVietnamese ? 'Bật âm thanh' : 'Unmute') : (isVietnamese ? 'Tắt âm thanh' : 'Mute master audio')}
                 aria-label="Toggle mute"
                 className="text-zen-body"
               >
@@ -77,7 +79,7 @@ export const SoundMixerDrawer: React.FC<SoundMixerDrawerProps> = ({ isOpen, onCl
                 variant="icon"
                 size="icon"
                 onClick={onClose}
-                aria-label="Close sound mixer"
+                aria-label={t.common.close}
                 className="text-zen-muted hover:text-zen-slate"
               >
                 <X className="w-4 h-4" />
@@ -99,13 +101,13 @@ export const SoundMixerDrawer: React.FC<SoundMixerDrawerProps> = ({ isOpen, onCl
         {/* Footer with Master Controls */}
         <div className="pt-4 border-t border-slate-200/70 flex flex-col gap-3.5">
           <GlassSlider
-            label="Master Ambience Volume"
+            label={t.mixer.masterVolume}
             value={masterVolume}
             min={0}
             max={100}
             step={1}
             disabled={isMuted}
-            valueDisplay={isMuted ? 'Muted' : `${masterVolume}%`}
+            valueDisplay={isMuted ? (isVietnamese ? 'Đã tắt tiếng' : 'Muted') : `${masterVolume}%`}
             onChange={setMasterVolume}
             accent="purple"
           />
@@ -117,7 +119,7 @@ export const SoundMixerDrawer: React.FC<SoundMixerDrawerProps> = ({ isOpen, onCl
               onClick={muteAll}
               className="text-xs text-zen-muted hover:text-zen-slate"
             >
-              Mute All Channels
+              {t.mixer.muteAll}
             </GlassButton>
 
             <GlassButton
@@ -128,7 +130,7 @@ export const SoundMixerDrawer: React.FC<SoundMixerDrawerProps> = ({ isOpen, onCl
               title="Test Tibetan Chime Bell"
             >
               <Bell className="w-3.5 h-3.5 text-primary" />
-              <span>Chime Bell</span>
+              <span>{t.mixer.testChime}</span>
             </GlassButton>
           </div>
         </div>

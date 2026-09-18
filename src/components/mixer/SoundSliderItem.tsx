@@ -2,6 +2,7 @@ import React from 'react';
 import { CloudRain, Flame, Wind, Waves, Coffee, Volume2, VolumeX } from 'lucide-react';
 import { GlassSlider } from '@/components/ui';
 import { SoundChannel, useSoundMixerStore } from '@/stores/useSoundMixerStore';
+import { useTranslation } from '@/stores/useLanguageStore';
 
 interface SoundSliderItemProps {
   channel: SoundChannel;
@@ -16,7 +17,11 @@ const ICONS: Record<string, React.ReactNode> = {
 };
 
 export const SoundSliderItem: React.FC<SoundSliderItemProps> = ({ channel }) => {
+  const { t, language } = useTranslation();
   const { setChannelVolume, toggleChannel } = useSoundMixerStore();
+
+  const channelKey = channel.id as keyof typeof t.mixer.channels;
+  const displayName = t.mixer.channels[channelKey]?.name || channel.name;
 
   return (
     <div
@@ -31,7 +36,7 @@ export const SoundSliderItem: React.FC<SoundSliderItemProps> = ({ channel }) => 
           <div className="p-2 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center">
             {ICONS[channel.iconName] || <Volume2 className="w-4 h-4 text-zen-muted" />}
           </div>
-          <span className="text-xs font-semibold text-zen-slate">{channel.name}</span>
+          <span className="text-xs font-semibold text-zen-slate">{displayName}</span>
         </div>
 
         {/* Toggle Switch */}
@@ -42,17 +47,17 @@ export const SoundSliderItem: React.FC<SoundSliderItemProps> = ({ channel }) => 
               ? 'bg-primary text-white shadow-xs'
               : 'bg-slate-100 text-zen-muted hover:text-zen-slate'
           }`}
-          aria-label={`Toggle ${channel.name}`}
+          aria-label={`Toggle ${displayName}`}
         >
           {channel.enabled ? (
             <>
               <Volume2 className="w-3 h-3" />
-              <span>ON</span>
+              <span>{language === 'vi' ? 'BẬT' : 'ON'}</span>
             </>
           ) : (
             <>
               <VolumeX className="w-3 h-3" />
-              <span>OFF</span>
+              <span>{language === 'vi' ? 'TẮT' : 'OFF'}</span>
             </>
           )}
         </button>
@@ -65,7 +70,7 @@ export const SoundSliderItem: React.FC<SoundSliderItemProps> = ({ channel }) => 
         max={100}
         step={1}
         disabled={!channel.enabled}
-        valueDisplay={channel.enabled ? `${channel.volume}%` : 'Off'}
+        valueDisplay={channel.enabled ? `${channel.volume}%` : (language === 'vi' ? 'Đã tắt' : 'Off')}
         onChange={(vol) => setChannelVolume(channel.id, vol)}
         accent={channel.accent}
         className={channel.enabled ? 'opacity-100' : 'opacity-40'}

@@ -1,0 +1,161 @@
+export interface TranslationSchema {
+  common: {
+    save: string;
+    cancel: string;
+    close: string;
+    delete: string;
+    reset: string;
+    done: string;
+    active: string;
+    fullscreen: string;
+    exitFullscreen: string;
+  };
+  topBar: {
+    brandSubtitle: string;
+    shortcuts: string;
+    shortcutsKey: string;
+    zenMode: string;
+    flowMode: string;
+    switchLangTooltip: string;
+  };
+  pomodoro: {
+    focusSession: string;
+    shortBreak: string;
+    longBreak: string;
+    sessionCounter: (current: number, total: number) => string;
+    startFocus: string;
+    pause: string;
+    resume: string;
+    resetTimer: string;
+    skipSession: string;
+    openSettings: string;
+    settingsTitle: string;
+    focusDuration: string;
+    shortBreakDuration: string;
+    longBreakDuration: string;
+    autoStartBreaks: string;
+    autoStartPomodoros: string;
+    minutesUnit: string;
+    statusCompleted: string;
+    quotes: string[];
+  };
+  mixer: {
+    title: string;
+    subtitle: string;
+    activeCount: (count: number) => string;
+    presetsTitle: string;
+    masterVolume: string;
+    muteAll: string;
+    testChime: string;
+    channels: {
+      rain: { name: string; desc: string };
+      campfire: { name: string; desc: string };
+      wind: { name: string; desc: string };
+      ocean: { name: string; desc: string };
+      coffee: { name: string; desc: string };
+    };
+    presets: {
+      rainyCafe: string;
+      mistyForest: string;
+      nordicMorning: string;
+      oceanZen: string;
+    };
+  };
+  todo: {
+    title: string;
+    subtitle: string;
+    leftCount: (count: number) => string;
+    tabToday: (count: number) => string;
+    tabArchive: (count: number) => string;
+    inputPlaceholder: string;
+    priorityLabel: string;
+    priorityHigh: string;
+    priorityNormal: string;
+    priorityLow: string;
+    smartRolloverBanner: string;
+    emptyTasks: string;
+    emptyArchive: string;
+    archiveNotice: string;
+    progressCompleted: (done: number, total: number, percent: number) => string;
+    archiveDoneAction: (count: number) => string;
+    estimatedTomatoes: string;
+    completedAtPrefix: string;
+  };
+  wallpaper: {
+    title: string;
+    subtitle: string;
+    categories: {
+      all: string;
+      nature: string;
+      minimal: string;
+      rain: string;
+      cozy: string;
+    };
+    curatedPresetsTitle: string;
+    customUrlTitle: string;
+    customUrlPlaceholder: string;
+    setUrlButton: string;
+    atmosphereTitle: string;
+    daylightDimmer: string;
+    backgroundBlur: string;
+    softLightSuffix: string;
+    focusSuffix: string;
+    resetDefaults: string;
+  };
+  shortcuts: {
+    title: string;
+    subtitle: string;
+    proBadge: string;
+    searchPlaceholder: string;
+    sectionTimer: string;
+    sectionAudio: string;
+    sectionNav: string;
+    spaceDesc: string;
+    spaceTitle: string;
+    rDesc: string;
+    rTitle: string;
+    sDesc: string;
+    sTitle: string;
+    mDesc: string;
+    mTitle: string;
+    pDesc: string;
+    pTitle: string;
+    wDesc: string;
+    wTitle: string;
+    tDesc: string;
+    tTitle: string;
+    fDesc: string;
+    fTitle: string;
+    questionDesc: string;
+    questionTitle: string;
+    escDesc: string;
+    escTitle: string;
+    proTip: string;
+    gotIt: string;
+  };
+  music: {
+    expandTooltip: string;
+    minimizeTooltip: string;
+    pastePlaceholder: string;
+    curatedStations: string;
+    liveBadge: string;
+    lofiTitle: string;
+  };
+  dock: {
+    musicTooltip: string;
+    mixerTooltip: string;
+    todoTooltip: string;
+    wallpaperTooltip: string;
+    fullscreenTooltip: string;
+    exitFullscreenTooltip: string;
+  };
+  pageTitle: {
+    focus: string;
+    shortBreak: string;
+    longBreak: string;
+    ready: string;
+    paused: string;
+    completedAlert: string;
+    breatheAlert: string;
+  };
+}

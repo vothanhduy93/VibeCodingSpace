@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { CheckSquare, X, Zap, CornerDownLeft } from 'lucide-react';
 import { GlassButton } from '@/components/ui';
 import { useTodoStore, PriorityLevel } from '@/stores/useTodoStore';
+import { useTranslation } from '@/stores/useLanguageStore';
 import { TodoItemRow } from './TodoItemRow';
 import { TodoArchiveView } from './TodoArchiveView';
 
@@ -12,6 +13,7 @@ interface TodoDrawerProps {
 
 export const TodoDrawer: React.FC<TodoDrawerProps> = ({ isOpen, onClose }) => {
   const { todos, archivedTodos, addTodo, clearCompleted } = useTodoStore();
+  const { t } = useTranslation();
 
   const [activeTab, setActiveTab] = useState<'today' | 'archive'>('today');
   const [taskInput, setTaskInput] = useState('');
@@ -52,14 +54,14 @@ export const TodoDrawer: React.FC<TodoDrawerProps> = ({ isOpen, onClose }) => {
               <div>
                 <div className="flex items-center gap-2">
                   <h3 className="font-headline font-bold text-lg text-zen-slate">
-                    Daily Focus Tasks
+                    {t.todo.title}
                   </h3>
                   <span className="px-2 py-0.5 rounded-full bg-purple-100 text-purple-700 text-[11px] font-semibold">
-                    {pendingCount} Left
+                    {t.todo.leftCount(pendingCount)}
                   </span>
                 </div>
                 <p className="text-xs text-zen-muted mt-0.5">
-                  Smart Rollover at local midnight
+                  {t.todo.subtitle}
                 </p>
               </div>
             </div>
@@ -68,7 +70,7 @@ export const TodoDrawer: React.FC<TodoDrawerProps> = ({ isOpen, onClose }) => {
               variant="icon"
               size="icon"
               onClick={onClose}
-              aria-label="Close task drawer"
+              aria-label={t.common.close}
               className="text-zen-muted hover:text-zen-slate"
             >
               <X className="w-4 h-4" />
@@ -85,7 +87,7 @@ export const TodoDrawer: React.FC<TodoDrawerProps> = ({ isOpen, onClose }) => {
                   : 'text-zen-muted hover:text-zen-slate hover:bg-white/60'
               }`}
             >
-              Today ({todos.length})
+              {t.todo.tabToday(todos.length)}
             </button>
             <button
               onClick={() => setActiveTab('archive')}
@@ -95,7 +97,7 @@ export const TodoDrawer: React.FC<TodoDrawerProps> = ({ isOpen, onClose }) => {
                   : 'text-zen-muted hover:text-zen-slate hover:bg-white/60'
               }`}
             >
-              Archive ({archivedTodos.length})
+              {t.todo.tabArchive(archivedTodos.length)}
             </button>
           </div>
 
@@ -105,7 +107,7 @@ export const TodoDrawer: React.FC<TodoDrawerProps> = ({ isOpen, onClose }) => {
               <div className="flex items-center gap-2 bg-white/90 border border-slate-200/80 rounded-2xl px-3.5 py-2 shadow-xs focus-within:border-primary focus-within:ring-1 focus-within:ring-primary">
                 <input
                   type="text"
-                  placeholder="+ Add focus task..."
+                  placeholder={t.todo.inputPlaceholder}
                   value={taskInput}
                   onChange={(e) => setTaskInput(e.target.value)}
                   className="flex-1 text-xs text-zen-slate placeholder:text-zen-subtle bg-transparent focus:outline-none"
@@ -118,21 +120,29 @@ export const TodoDrawer: React.FC<TodoDrawerProps> = ({ isOpen, onClose }) => {
 
               {/* Priority Pills for new task */}
               <div className="flex items-center gap-1.5 pl-1">
-                <span className="text-[10px] text-zen-muted">Priority:</span>
-                {(['high', 'normal', 'low'] as PriorityLevel[]).map((p) => (
-                  <button
-                    key={p}
-                    type="button"
-                    onClick={() => setSelectedPriority(p)}
-                    className={`text-[10px] font-semibold px-2.5 py-0.5 rounded-full capitalize cursor-pointer transition-colors ${
-                      selectedPriority === p
-                        ? 'bg-zen-slate text-white'
-                        : 'bg-slate-100 text-zen-muted hover:text-zen-slate'
-                    }`}
-                  >
-                    {p}
-                  </button>
-                ))}
+                <span className="text-[10px] text-zen-muted">{t.todo.priorityLabel}</span>
+                {(['high', 'normal', 'low'] as PriorityLevel[]).map((p) => {
+                  const label =
+                    p === 'high'
+                      ? t.todo.priorityHigh
+                      : p === 'normal'
+                      ? t.todo.priorityNormal
+                      : t.todo.priorityLow;
+                  return (
+                    <button
+                      key={p}
+                      type="button"
+                      onClick={() => setSelectedPriority(p)}
+                      className={`text-[10px] font-semibold px-2.5 py-0.5 rounded-full capitalize cursor-pointer transition-colors ${
+                        selectedPriority === p
+                          ? 'bg-zen-slate text-white'
+                          : 'bg-slate-100 text-zen-muted hover:text-zen-slate'
+                      }`}
+                    >
+                      {label}
+                    </button>
+                  );
+                })}
               </div>
             </form>
           )}
@@ -141,7 +151,7 @@ export const TodoDrawer: React.FC<TodoDrawerProps> = ({ isOpen, onClose }) => {
           <div className="p-3 rounded-2xl bg-purple-50/80 border border-purple-100 flex items-center gap-2.5 text-xs text-purple-900 shadow-xs mb-3">
             <Zap className="w-4 h-4 text-primary flex-shrink-0" />
             <span className="text-[11px] leading-tight">
-              <strong>Smart Rollover:</strong> Uncompleted tasks roll over to tomorrow automatically.
+              {t.todo.smartRolloverBanner}
             </span>
           </div>
         </div>
@@ -151,7 +161,7 @@ export const TodoDrawer: React.FC<TodoDrawerProps> = ({ isOpen, onClose }) => {
           {activeTab === 'today' ? (
             todos.length === 0 ? (
               <div className="p-8 text-center text-zen-muted text-xs">
-                No tasks yet. Take a breath and add your first intention!
+                {t.todo.emptyTasks}
               </div>
             ) : (
               todos.map((todo) => <TodoItemRow key={todo.id} todo={todo} />)
@@ -165,7 +175,7 @@ export const TodoDrawer: React.FC<TodoDrawerProps> = ({ isOpen, onClose }) => {
         <div className="pt-3 border-t border-slate-200/70 flex flex-col gap-2.5">
           <div className="flex items-center justify-between text-xs text-zen-slate font-semibold">
             <span>
-              {completedCount} of {totalCount} completed
+              {t.todo.progressCompleted(completedCount, totalCount, progressPercent)}
             </span>
             <span className="font-mono text-primary">{progressPercent}%</span>
           </div>
@@ -184,7 +194,7 @@ export const TodoDrawer: React.FC<TodoDrawerProps> = ({ isOpen, onClose }) => {
                 onClick={clearCompleted}
                 className="text-[11px] font-medium text-zen-muted hover:text-rose-600 transition-colors cursor-pointer"
               >
-                Archive {completedCount} completed
+                {t.todo.archiveDoneAction(completedCount)}
               </button>
             </div>
           )}

@@ -1,17 +1,19 @@
 import React from 'react';
 import { Archive, CheckCircle2 } from 'lucide-react';
 import { useTodoStore } from '@/stores/useTodoStore';
+import { useTranslation } from '@/stores/useLanguageStore';
 
 export const TodoArchiveView: React.FC = () => {
   const { archivedTodos } = useTodoStore();
+  const { t } = useTranslation();
 
   if (archivedTodos.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center p-8 text-center text-zen-muted">
         <Archive className="w-8 h-8 stroke-1 text-slate-300 mb-2" />
-        <p className="text-xs font-medium">No archived tasks yet</p>
+        <p className="text-xs font-medium">{t.todo.emptyArchive}</p>
         <p className="text-[11px] text-zen-subtle mt-1">
-          Completed tasks auto-archive at midnight
+          {t.todo.archiveNotice}
         </p>
       </div>
     );

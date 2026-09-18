@@ -57,15 +57,21 @@
   - `F`: Bật / Tắt chế độ Fullscreen toàn màn hình
   - `Esc`: Đóng toàn bộ Drawer / Modal đang mở
 
+### 🌐 FS-08: Hệ thống Đa ngôn ngữ i18n Mặc định Tiếng Việt (Vietnamese Default with Language Switcher)
+- **Mặc định 100% Tiếng Việt (vi-VN):** Người dùng truy cập lần đầu được trải nghiệm ngay toàn bộ giao diện tiếng Việt với văn phong Zen tinh tế, cô đọng và trang nhã.
+- **Nút chuyển đổi nhanh 1-Click trên TopBar:** Nút `[VI | EN]` dạng Light Frosted Glass với độ trễ chuyển đổi 0ms tức thì, không cần tải lại trang.
+- **Lưu trữ cấu hình bền vững (LocalStorage):** Tự động đồng bộ khóa `vibespace_v1_language`, duy trì sở thích ngôn ngữ của người dùng qua các phiên truy cập.
+- **Bao phủ toàn diện (100% UI Coverage):** Đồng hồ thời gian thực (`vi-VN` vs `en-US`), Đồng hồ Pomodoro & danh ngôn Zen, Bộ trộn âm thanh & 5 kênh âm thanh trắng, Danh sách mục tiêu trong ngày Todo, Thư viện hình nền Canvas & Bộ lọc ánh sáng, Bảng tra cứu phím tắt và Tiêu đề tab trình duyệt động.
+
 ---
 
 ## 3. Chỉ số Hiệu năng & Chất lượng (Quality Gate Verification)
 
 | Tiêu chí | Kết quả đo đạc | Ngưỡng yêu cầu | Đánh giá |
 | :--- | :---: | :---: | :---: |
-| **Unit Tests (Vitest)** | 34 / 34 passed | 100% | ✅ PASS |
+| **Unit Tests (Vitest)** | **38 / 38 passed** | 100% | ✅ PASS |
 | **Console Runtime Errors** | 0 errors | 0 errors | ✅ PASS |
-| **Gzipped JS Initial Bundle** | **100.93 KB** | $< 150\text{KB}$ | ✅ XUẤT SẮC |
+| **Gzipped JS Initial Bundle** | **107.54 KB** | $< 150\text{KB}$ | ✅ XUẤT SẮC |
 | **Gzipped CSS Bundle** | **6.50 KB** | $< 15\text{KB}$ | ✅ XUẤT SẮC |
 | **Độ tương phản (Contrast Ratio)** | **14.2 : 1** | $\ge 7.0:1$ (WCAG AAA) | ✅ WCAG AAA |
 | **Khả năng hiển thị Responsive** | 6/6 Viewports (4K, 2K, 1080p, Laptop, Tablet, Mobile 390x844) | 100% | ✅ PASS |

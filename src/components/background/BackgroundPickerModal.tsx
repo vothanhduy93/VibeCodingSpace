@@ -6,6 +6,7 @@ import {
   DEFAULT_WALLPAPERS,
   WallpaperPreset,
 } from '@/stores/useBackgroundStore';
+import { useTranslation } from '@/stores/useLanguageStore';
 
 interface BackgroundPickerModalProps {
   isOpen: boolean;
@@ -27,16 +28,17 @@ export const BackgroundPickerModal: React.FC<BackgroundPickerModalProps> = ({
     setBlurAmount,
     resetDefaults,
   } = useBackgroundStore();
+  const { t } = useTranslation();
 
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [customInput, setCustomInput] = useState<string>(customUrl || '');
 
   const categories = [
-    { id: 'all', label: 'All' },
-    { id: 'nature', label: 'Sunlit Nature' },
-    { id: 'minimal', label: 'Minimalist Study' },
-    { id: 'rain', label: 'Daylight Rain' },
-    { id: 'cozy', label: 'Cozy Teahouse' },
+    { id: 'all', label: t.wallpaper.categories.all },
+    { id: 'nature', label: t.wallpaper.categories.nature },
+    { id: 'minimal', label: t.wallpaper.categories.minimal },
+    { id: 'rain', label: t.wallpaper.categories.rain },
+    { id: 'cozy', label: t.wallpaper.categories.cozy },
   ];
 
   const filteredWallpapers =
@@ -57,8 +59,8 @@ export const BackgroundPickerModal: React.FC<BackgroundPickerModalProps> = ({
       onClose={onClose}
       maxWidth="2xl"
       icon={<Sparkles className="w-5 h-5 text-primary" />}
-      title="Aesthetic Canvas & Atmosphere"
-      subtitle="Curate your serene focus visual ambiance"
+      title={t.wallpaper.title}
+      subtitle={t.wallpaper.subtitle}
     >
       <div className="flex flex-col gap-6 max-h-[75vh] overflow-y-auto pr-1">
         {/* Category Pills */}
@@ -81,7 +83,7 @@ export const BackgroundPickerModal: React.FC<BackgroundPickerModalProps> = ({
         {/* Thumbnail Grid */}
         <div>
           <h4 className="text-xs font-semibold uppercase tracking-wider text-zen-muted mb-3">
-            Curated Daylight Presets
+            {t.wallpaper.curatedPresetsTitle}
           </h4>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3.5">
             {filteredWallpapers.map((wp: WallpaperPreset) => {
@@ -131,18 +133,18 @@ export const BackgroundPickerModal: React.FC<BackgroundPickerModalProps> = ({
         <div className="glass-tier3 p-4 rounded-2xl border border-slate-200/80 flex flex-col gap-2.5">
           <div className="flex items-center gap-2 text-xs font-semibold text-zen-slate">
             <UploadCloud className="w-4 h-4 text-primary" />
-            <span>Custom Image or Video URL</span>
+            <span>{t.wallpaper.customUrlTitle}</span>
           </div>
           <form onSubmit={handleApplyCustomUrl} className="flex gap-2">
             <input
               type="url"
-              placeholder="Paste direct image or WebM/MP4 link..."
+              placeholder={t.wallpaper.customUrlPlaceholder}
               value={customInput}
               onChange={(e) => setCustomInput(e.target.value)}
               className="flex-1 text-xs px-3.5 py-2 rounded-xl bg-white border border-slate-200/80 text-zen-slate placeholder:text-zen-subtle focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
             />
             <GlassButton type="submit" size="sm" variant="primary">
-              Set URL
+              {t.wallpaper.setUrlButton}
             </GlassButton>
           </form>
         </div>
@@ -150,31 +152,31 @@ export const BackgroundPickerModal: React.FC<BackgroundPickerModalProps> = ({
         {/* Atmosphere Adjustment Sliders */}
         <div className="glass-tier3 p-4 sm:p-5 rounded-2xl border border-slate-200/80 flex flex-col gap-4">
           <h4 className="text-xs font-semibold uppercase tracking-wider text-zen-muted">
-            Atmosphere & Filters
+            {t.wallpaper.atmosphereTitle}
           </h4>
 
           {/* Daylight Dimmer / Overlay */}
           <GlassSlider
-            label="Daylight Dimmer"
+            label={t.wallpaper.daylightDimmer}
             icon={<Sun className="w-4 h-4 text-amber-500" />}
             value={overlayOpacity}
             min={0}
             max={70}
             step={1}
-            valueDisplay={`${overlayOpacity}% Soft Light`}
+            valueDisplay={`${overlayOpacity}${t.wallpaper.softLightSuffix}`}
             onChange={setOverlayOpacity}
             accent="purple"
           />
 
           {/* Background Blur */}
           <GlassSlider
-            label="Background Blur"
+            label={t.wallpaper.backgroundBlur}
             icon={<Eye className="w-4 h-4 text-sky-500" />}
             value={blurAmount}
             min={0}
             max={20}
             step={1}
-            valueDisplay={`${blurAmount}px Focus`}
+            valueDisplay={`${blurAmount}${t.wallpaper.focusSuffix}`}
             onChange={setBlurAmount}
             accent="cyan"
           />
@@ -189,12 +191,12 @@ export const BackgroundPickerModal: React.FC<BackgroundPickerModalProps> = ({
             className="text-xs text-zen-muted hover:text-zen-slate flex items-center gap-1.5"
           >
             <Undo2 className="w-3.5 h-3.5" />
-            Reset Defaults
+            {t.wallpaper.resetDefaults}
           </GlassButton>
 
           <div className="flex items-center gap-2">
             <GlassButton variant="primary" size="sm" onClick={onClose} glow>
-              Done
+              {t.common.done}
             </GlassButton>
           </div>
         </div>

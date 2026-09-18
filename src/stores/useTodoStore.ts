@@ -38,7 +38,7 @@ function getTodayDateString(): string {
 const INITIAL_TODOS: TodoItem[] = [
   {
     id: '1',
-    title: 'Finalize VibeSpace Light Mode Design System',
+    title: 'Hoàn thiện hệ thống thiết kế VibeSpace Light Mode & Thủy tinh mờ',
     isCompleted: false,
     priority: 'high',
     estimatedPomodoros: 4,
@@ -46,7 +46,7 @@ const INITIAL_TODOS: TodoItem[] = [
   },
   {
     id: '2',
-    title: 'Review Web Audio Gapless Loop AudioBuffer',
+    title: 'Tối ưu vòng lặp Web Audio Gapless Loop AudioBuffer',
     isCompleted: false,
     priority: 'normal',
     estimatedPomodoros: 2,
@@ -54,7 +54,7 @@ const INITIAL_TODOS: TodoItem[] = [
   },
   {
     id: '3',
-    title: 'Set up Vite 6 + React 19 Clean-Room project',
+    title: 'Khởi động phiên tập trung Pomodoro 25 phút chuyên sâu',
     isCompleted: false,
     priority: 'normal',
     estimatedPomodoros: 2,
@@ -62,7 +62,7 @@ const INITIAL_TODOS: TodoItem[] = [
   },
   {
     id: '4',
-    title: 'Draft Master SDLC PRD & Architecture v1.2',
+    title: 'Phác thảo tài liệu kiến trúc kỹ thuật SDLC v1.2',
     isCompleted: true,
     priority: 'normal',
     completedAt: '09:30',

@@ -4,6 +4,7 @@ import { Tooltip } from '@/components/ui';
 import { useSoundMixerStore } from '@/stores/useSoundMixerStore';
 import { useTodoStore } from '@/stores/useTodoStore';
 import { useYouTubeStore } from '@/stores/useYouTubeStore';
+import { useTranslation } from '@/stores/useLanguageStore';
 
 interface FloatingDockProps {
   onToggleSoundMixer: () => void;
@@ -26,6 +27,7 @@ export const FloatingDock: React.FC<FloatingDockProps> = ({
   isTodoOpen,
   isWallpaperOpen,
 }) => {
+  const { t } = useTranslation();
   const { channels } = useSoundMixerStore();
   const { todos } = useTodoStore();
   const { displayMode, setDisplayMode } = useYouTubeStore();
@@ -49,7 +51,7 @@ export const FloatingDock: React.FC<FloatingDockProps> = ({
       className="glass-tier1 rounded-full px-4 sm:px-6 py-2.5 shadow-glass-dock border border-white/95 flex items-center gap-2 sm:gap-3 select-none transition-all duration-300 hover:shadow-2xl"
     >
       {/* 1. Music Button */}
-      <Tooltip content="Lofi Music Player" position="top">
+      <Tooltip content={t.dock.musicTooltip} position="top">
         <button
           onClick={handleToggleMusic}
           className={`relative p-3 rounded-full transition-all duration-200 cursor-pointer active:scale-95 ${
@@ -64,7 +66,7 @@ export const FloatingDock: React.FC<FloatingDockProps> = ({
       </Tooltip>
 
       {/* 2. Sound Mixer Button */}
-      <Tooltip content="Ambient Sound Mixer (P)" position="top">
+      <Tooltip content={t.dock.mixerTooltip} position="top">
         <button
           onClick={onToggleSoundMixer}
           className={`relative p-3 rounded-full transition-all duration-200 cursor-pointer active:scale-95 ${
@@ -84,7 +86,7 @@ export const FloatingDock: React.FC<FloatingDockProps> = ({
       </Tooltip>
 
       {/* 3. Daily Tasks Button */}
-      <Tooltip content="Daily Focus Tasks (T)" position="top">
+      <Tooltip content={t.dock.todoTooltip} position="top">
         <button
           onClick={onToggleTodo}
           className={`relative p-3 rounded-full transition-all duration-200 cursor-pointer active:scale-95 ${
@@ -106,7 +108,7 @@ export const FloatingDock: React.FC<FloatingDockProps> = ({
       <div className="w-[1px] h-6 bg-slate-200/80 mx-1" />
 
       {/* 4. Wallpaper Switcher Button */}
-      <Tooltip content="Canvas & Atmosphere (W)" position="top">
+      <Tooltip content={t.dock.wallpaperTooltip} position="top">
         <button
           onClick={onToggleWallpaper}
           className={`relative p-3 rounded-full transition-all duration-200 cursor-pointer active:scale-95 ${
@@ -121,7 +123,7 @@ export const FloatingDock: React.FC<FloatingDockProps> = ({
       </Tooltip>
 
       {/* 5. Fullscreen Toggle */}
-      <Tooltip content={isFullscreen ? 'Exit Fullscreen (F)' : 'Zen Fullscreen (F)'} position="top">
+      <Tooltip content={isFullscreen ? t.dock.exitFullscreenTooltip : t.dock.fullscreenTooltip} position="top">
         <button
           onClick={onToggleFullscreen}
           className="p-3 rounded-full text-zen-body hover:bg-white/90 hover:text-zen-slate transition-all duration-200 cursor-pointer active:scale-95"

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Command, Maximize2, Minimize2 } from 'lucide-react';
+import { Sparkles, Command, Maximize2, Minimize2, Globe } from 'lucide-react';
 import { Tooltip } from '@/components/ui';
+import { useTranslation } from '@/stores/useLanguageStore';
 
 interface TopBarClockProps {
   onOpenShortcuts: () => void;
@@ -13,24 +14,26 @@ export const TopBarClock: React.FC<TopBarClockProps> = ({
   isFullscreen,
   onToggleFullscreen,
 }) => {
+  const { t, language, toggleLanguage } = useTranslation();
   const [timeString, setTimeString] = useState('');
   const [dateString, setDateString] = useState('');
 
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
+      const locale = language === 'vi' ? 'vi-VN' : 'en-US';
       setTimeString(
-        now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        now.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' })
       );
       setDateString(
-        now.toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' })
+        now.toLocaleDateString(locale, { weekday: 'short', month: 'short', day: 'numeric' })
       );
     };
 
     updateTime();
     const timer = setInterval(updateTime, 1000);
     return () => clearInterval(timer);
-  }, []);
+  }, [language]);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-30 px-6 py-3.5 flex items-center justify-between select-none">
@@ -58,21 +61,35 @@ export const TopBarClock: React.FC<TopBarClockProps> = ({
 
       {/* Actions */}
       <div className="flex items-center gap-2">
+        {/* Language Switcher */}
+        <Tooltip content={t.topBar.switchLangTooltip} position="bottom">
+          <button
+            onClick={toggleLanguage}
+            className="glass-tier1 px-2.5 py-1.5 rounded-2xl flex items-center gap-1.5 text-xs text-zen-body hover:text-zen-slate hover:bg-white transition-all shadow-sm cursor-pointer"
+            aria-label="Toggle language"
+          >
+            <Globe className="w-3.5 h-3.5 text-primary" />
+            <span className="font-bold text-[11px] text-primary">
+              {language === 'vi' ? 'VI' : 'EN'}
+            </span>
+          </button>
+        </Tooltip>
+
         {/* Shortcuts Trigger */}
-        <Tooltip content="Keyboard Shortcuts (?)" position="bottom">
+        <Tooltip content={`${t.topBar.shortcuts} (${t.topBar.shortcutsKey})`} position="bottom">
           <button
             onClick={onOpenShortcuts}
             className="glass-tier1 px-3 py-1.5 rounded-2xl flex items-center gap-1.5 text-xs text-zen-body hover:text-zen-slate hover:bg-white transition-all shadow-sm cursor-pointer"
             aria-label="Open keyboard shortcuts"
           >
             <Command className="w-3.5 h-3.5 text-primary" />
-            <span className="font-medium hidden sm:inline">Shortcuts</span>
+            <span className="font-medium hidden sm:inline">{t.topBar.shortcuts}</span>
             <kbd className="keycap text-[10px] text-primary px-1.5 py-0.5 rounded ml-0.5">?</kbd>
           </button>
         </Tooltip>
 
         {/* Fullscreen Toggle */}
-        <Tooltip content={isFullscreen ? 'Exit Fullscreen (F)' : 'Zen Fullscreen (F)'} position="bottom">
+        <Tooltip content={isFullscreen ? t.common.exitFullscreen : t.topBar.zenMode} position="bottom">
           <button
             onClick={onToggleFullscreen}
             className="glass-tier1 p-2 rounded-2xl text-zen-body hover:text-zen-slate hover:bg-white transition-all shadow-sm cursor-pointer"
@@ -89,7 +106,7 @@ export const TopBarClock: React.FC<TopBarClockProps> = ({
         {/* User Zen Flow Badge */}
         <div className="glass-tier1 px-3 py-1.5 rounded-2xl hidden md:flex items-center gap-2 shadow-sm text-xs font-semibold text-purple-800">
           <Sparkles className="w-3.5 h-3.5 text-primary" />
-          <span>Flow Mode</span>
+          <span>{t.topBar.flowMode}</span>
         </div>
       </div>
     </header>

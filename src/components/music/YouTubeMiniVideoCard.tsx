@@ -2,8 +2,10 @@ import React, { useState, useRef } from 'react';
 import { GripHorizontal, Minimize2, X, Volume2, VolumeX, Plus, Radio } from 'lucide-react';
 import { GlassSlider, GlassButton } from '@/components/ui';
 import { useYouTubeStore, CURATED_TRACKS } from '@/stores/useYouTubeStore';
+import { useTranslation } from '@/stores/useLanguageStore';
 
 export const YouTubeMiniVideoCard: React.FC = () => {
+  const { t } = useTranslation();
   const {
     currentTrack,
     volume,
@@ -103,7 +105,7 @@ export const YouTubeMiniVideoCard: React.FC = () => {
           <GripHorizontal className="w-4 h-4 text-zen-muted" />
           <span className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 text-[10px] font-bold">
             <Radio className="w-2.5 h-2.5 animate-pulse" />
-            LIVE
+            {t.music.liveBadge}
           </span>
           <span className="text-xs font-bold text-zen-slate truncate max-w-[170px]">
             {currentTrack.title}
@@ -115,8 +117,8 @@ export const YouTubeMiniVideoCard: React.FC = () => {
           <button
             onClick={() => setDisplayMode('pill')}
             className="p-1 text-zen-muted hover:text-zen-slate rounded-lg hover:bg-white/80 cursor-pointer"
-            title="Minimize to Pill"
-            aria-label="Minimize"
+            title={t.music.minimizeTooltip}
+            aria-label={t.music.minimizeTooltip}
           >
             <Minimize2 className="w-3.5 h-3.5" />
           </button>
@@ -125,8 +127,8 @@ export const YouTubeMiniVideoCard: React.FC = () => {
           <button
             onClick={() => setDisplayMode('hidden')}
             className="p-1 text-zen-muted hover:text-zen-slate rounded-lg hover:bg-white/80 cursor-pointer"
-            title="Close Player"
-            aria-label="Close"
+            title={t.common.close}
+            aria-label={t.common.close}
           >
             <X className="w-3.5 h-3.5" />
           </button>
@@ -150,6 +152,7 @@ export const YouTubeMiniVideoCard: React.FC = () => {
           <button
             onClick={toggleMute}
             className="p-1 text-zen-muted hover:text-zen-slate cursor-pointer"
+            aria-label={isMuted ? 'Unmute' : 'Mute'}
           >
             {isMuted ? <VolumeX className="w-3.5 h-3.5 text-rose-500" /> : <Volume2 className="w-3.5 h-3.5" />}
           </button>
@@ -188,7 +191,7 @@ export const YouTubeMiniVideoCard: React.FC = () => {
         <form onSubmit={handleCustomUrlSubmit} className="flex gap-1.5 mt-1">
           <input
             type="url"
-            placeholder="Paste YouTube link / playlist..."
+            placeholder={t.music.pastePlaceholder}
             value={inputUrl}
             onChange={(e) => setInputUrl(e.target.value)}
             className="flex-1 text-[11px] px-3 py-1.5 rounded-xl bg-white border border-slate-200/80 text-zen-slate placeholder:text-zen-subtle focus:outline-none focus:border-primary"
