@@ -1,0 +1,71 @@
+name: VibeSpace CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  quality-gate-and-build:
+    name: 🛡️ Quality Gate, Unit Tests & Production Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Node.js LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: 📦 Install Dependencies
+        run: npm ci
+
+      - name: 🔍 TypeScript Compile Check
+        run: npx tsc -b
+
+      - name: 🧪 Execute Unit Test Suite (Vitest)
+        run: npm test
+
+      - name: 🚀 Compile Production Build
+        run: npm run build
+
+      - name: 📊 Verify Production Distribution Artifacts
+        run: |
+          ls -la dist/
+          test -f dist/index.html
+          test -f dist/manifest.json
+          test -f dist/sw.js
+
+      - name: 📤 Upload Pages Artifact
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/
+
+  deploy-github-pages:
+    name: 🌐 Deploy to GitHub Pages
+    if: github.ref == 'refs/heads/main'
+    needs: quality-gate-and-build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 🚀 Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

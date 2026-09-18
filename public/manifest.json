@@ -1,0 +1,29 @@
+{
+  "name": "VibeSpace — Zen Focus Workspace",
+  "short_name": "VibeSpace",
+  "description": "Personalized, minimalist, aesthetic Zen Focus Workspace with Pomodoro, Ambient Sounds, Lofi Player, and Daily Todos",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#7c3aed",
+  "orientation": "any",
+  "categories": ["productivity", "lifestyle", "music"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

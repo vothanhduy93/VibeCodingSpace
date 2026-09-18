@@ -14,6 +14,18 @@ export default defineConfig({
     port: 3000,
     open: false,
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom'],
+          'vendor-icons': ['lucide-react'],
+          'vendor-state': ['zustand', 'clsx', 'tailwind-merge'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 600,
+  },
   test: {
     globals: true,
     setupFiles: ['./src/test/setup.ts'],
