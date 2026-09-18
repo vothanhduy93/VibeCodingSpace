@@ -4,17 +4,19 @@
  */
 
 const CACHE_NAME = 'vibespace-v1-cache';
-const STATIC_ASSETS = [
-  '/',
-  '/index.html',
-  '/favicon.svg',
-  '/manifest.json'
-];
 
 self.addEventListener('install', (event) => {
+  const scope = self.registration.scope;
+  const staticAssets = [
+    scope,
+    `${scope}index.html`,
+    `${scope}favicon.svg`,
+    `${scope}manifest.json`
+  ];
+
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(STATIC_ASSETS);
+      return cache.addAll(staticAssets).catch(() => {});
     })
   );
   self.skipWaiting();

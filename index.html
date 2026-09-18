@@ -23,7 +23,8 @@
     <script>
       if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js').catch(err => {
+          const basePath = window.location.pathname.endsWith('/') ? window.location.pathname : window.location.pathname + '/';
+          navigator.serviceWorker.register(basePath + 'sw.js').catch(err => {
             console.warn('PWA ServiceWorker registration skipped:', err);
           });
         });

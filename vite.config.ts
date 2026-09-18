@@ -2,8 +2,11 @@ import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 
+const isGitHubPages = process.env.GITHUB_PAGES === 'true' || process.env.CI === 'true';
+
 // https://vite.dev/config/
 export default defineConfig({
+  base: isGitHubPages ? '/VibeCodingSpace/' : '/',
   plugins: [react()],
   resolve: {
     alias: {
