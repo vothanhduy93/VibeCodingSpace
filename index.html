@@ -1,16 +1,16 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#7c3aed" />
     <meta name="description" content="Personalized, minimalist, aesthetic Zen Focus Workspace with Pomodoro, Ambient Sounds, Lofi Player, and Daily Todos" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="VibeSpace" />
-    <link rel="manifest" href="/manifest.json" />
-    <title>VibeSpace — Zen Focus Workspace</title>
+    <link rel="manifest" href="./manifest.json" />
+    <title>VibeSpace — Không Gian Tập Trung Zen</title>
     
     <!-- Google Fonts: Plus Jakarta Sans, Inter, JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,9 @@
       if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
         window.addEventListener('load', () => {
           const basePath = window.location.pathname.endsWith('/') ? window.location.pathname : window.location.pathname + '/';
-          navigator.serviceWorker.register(basePath + 'sw.js').catch(err => {
+          navigator.serviceWorker.register(basePath + 'sw.js').then(reg => {
+            reg.update();
+          }).catch(err => {
             console.warn('PWA ServiceWorker registration skipped:', err);
           });
         });

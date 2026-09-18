@@ -1,8 +1,8 @@
 {
-  "name": "VibeSpace — Zen Focus Workspace",
+  "name": "VibeSpace — Không Gian Tập Trung Zen",
   "short_name": "VibeSpace",
-  "description": "Personalized, minimalist, aesthetic Zen Focus Workspace with Pomodoro, Ambient Sounds, Lofi Player, and Daily Todos",
-  "start_url": "/",
+  "description": "Không gian làm việc số cá nhân hóa, tối giản và tĩnh lặng chuẩn Zen với Pomodoro, Nhạc Lofi, Tiếng ồn trắng và Mục tiêu trong ngày",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#f8fafc",
   "theme_color": "#7c3aed",
@@ -10,18 +10,18 @@
   "categories": ["productivity", "lifestyle", "music"],
   "icons": [
     {
-      "src": "/favicon.svg",
+      "src": "favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     },
     {
-      "src": "/favicon.svg",
+      "src": "favicon.svg",
       "sizes": "192x192",
       "type": "image/svg+xml"
     },
     {
-      "src": "/favicon.svg",
+      "src": "favicon.svg",
       "sizes": "512x512",
       "type": "image/svg+xml"
     }

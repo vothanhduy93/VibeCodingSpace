@@ -3,7 +3,7 @@
  * Cache-First for static assets, Network-First for dynamic media
  */
 
-const CACHE_NAME = 'vibespace-v1-cache';
+const CACHE_NAME = 'vibespace-v1.2-cache';
 
 self.addEventListener('install', (event) => {
   const scope = self.registration.scope;
@@ -46,7 +46,27 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Cache-first for same-origin static assets
+  // 1. Navigation requests (HTML): Network-First with Cache Fallback
+  if (request.mode === 'navigate' || (request.headers.get('accept') && request.headers.get('accept').includes('text/html'))) {
+    event.respondWith(
+      fetch(request)
+        .then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            const responseToCache = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(request, responseToCache);
+            });
+          }
+          return networkResponse;
+        })
+        .catch(() => {
+          return caches.match(request).then((cached) => cached || caches.match(`${self.registration.scope}index.html`));
+        })
+    );
+    return;
+  }
+
+  // 2. Cache-first for same-origin static assets (JS chunks, CSS, images)
   if (url.origin === location.origin) {
     event.respondWith(
       caches.match(request).then((cachedResponse) => {
