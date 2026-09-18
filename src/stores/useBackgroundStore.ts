@@ -52,9 +52,9 @@ export const DEFAULT_WALLPAPERS: WallpaperPreset[] = [
     name: 'Cozy Teahouse Dawn',
     category: 'cozy',
     type: 'image',
-    url: 'https://images.unsplash.com/photo-1528164344705-475426879c0d?auto=format&fit=crop&w=2560&q=85',
-    thumbnailUrl: 'https://images.unsplash.com/photo-1528164344705-475426879c0d?auto=format&fit=crop&w=400&q=70',
-    badge: '4K Dawn',
+    url: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?auto=format&fit=crop&w=2560&q=85',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?auto=format&fit=crop&w=400&q=70',
+    badge: '4K Teahouse',
   },
   {
     id: 'misty-forest',

@@ -91,7 +91,7 @@ export const useTodoStore = create<TodoState>((set, get) => ({
     if (!title.trim()) return;
 
     const newTodo: TodoItem = {
-      id: Date.now().toString(),
+      id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
       title: title.trim(),
       isCompleted: false,
       priority,

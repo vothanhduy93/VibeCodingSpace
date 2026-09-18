@@ -11,10 +11,10 @@ export interface YouTubeTrack {
 
 export const CURATED_TRACKS: YouTubeTrack[] = [
   {
-    title: 'Lofi Hip Hop Radio - Beats to Relax/Study',
-    artist: 'Lofi Girl',
-    url: 'https://www.youtube.com/watch?v=jfKfPfyJRdk',
-    videoId: 'jfKfPfyJRdk',
+    title: 'Japanese Garden Lofi Beats to Relax/Study',
+    artist: 'Lofi Girl / ChilledCow',
+    url: 'https://www.youtube.com/watch?v=n61ULEU7SU0',
+    videoId: 'n61ULEU7SU0',
   },
   {
     title: 'Synthwave Radio - Chill synth / retro beats',

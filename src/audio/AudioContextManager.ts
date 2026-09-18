@@ -8,7 +8,9 @@ class AudioContextManager {
   private isUnlocked = false;
 
   private constructor() {
-    this.setupUnlockListeners();
+    if (typeof window !== 'undefined') {
+      this.setupUnlockListeners();
+    }
   }
 
   public static getInstance(): AudioContextManager {
@@ -18,12 +20,15 @@ class AudioContextManager {
     return AudioContextManager.instance;
   }
 
-  public getContext(): AudioContext {
+  public getContext(): AudioContext | null {
+    if (typeof window === 'undefined') return null;
     if (!this.ctx) {
       const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      this.ctx = new AudioCtx();
+      if (AudioCtx) {
+        this.ctx = new AudioCtx();
+      }
     }
-    if (this.ctx.state === 'suspended') {
+    if (this.ctx && this.ctx.state === 'suspended') {
       this.ctx.resume().catch(() => {});
     }
     return this.ctx;
@@ -33,6 +38,7 @@ class AudioContextManager {
     const unlock = () => {
       if (this.isUnlocked) return;
       const ctx = this.getContext();
+      if (!ctx) return;
       if (ctx.state === 'suspended') {
         ctx.resume().then(() => {
           this.isUnlocked = true;

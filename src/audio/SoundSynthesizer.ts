@@ -29,6 +29,7 @@ export class AmbientAudioEngine {
 
   private initMasterGain() {
     const ctx = audioContextManager.getContext();
+    if (!ctx) return;
     this.masterGain = ctx.createGain();
     this.masterGain.gain.setValueAtTime(0.8, ctx.currentTime);
     this.masterGain.connect(ctx.destination);
@@ -39,6 +40,7 @@ export class AmbientAudioEngine {
    */
   public setMasterVolume(vol: number) {
     const ctx = audioContextManager.getContext();
+    if (!ctx) return;
     if (!this.masterGain) this.initMasterGain();
     const target = Math.max(0, Math.min(1, vol / 100));
 
@@ -53,6 +55,7 @@ export class AmbientAudioEngine {
    */
   public setMasterMute(muted: boolean) {
     const ctx = audioContextManager.getContext();
+    if (!ctx) return;
     if (!this.masterGain) this.initMasterGain();
     this.isMuted = muted;
 
@@ -67,11 +70,14 @@ export class AmbientAudioEngine {
    */
   public setChannelVolume(channelId: string, volume: number, enabled: boolean) {
     const ctx = audioContextManager.getContext();
+    if (!ctx) return;
     let gainNode = this.channelGains.get(channelId);
 
     if (!gainNode) {
       gainNode = ctx.createGain();
-      gainNode.connect(this.masterGain!);
+      if (this.masterGain) {
+        gainNode.connect(this.masterGain);
+      }
       this.channelGains.set(channelId, gainNode);
       this.startGenerator(channelId, gainNode);
     }
@@ -85,6 +91,9 @@ export class AmbientAudioEngine {
    */
   public playZenChime() {
     const ctx = audioContextManager.getContext();
+    if (!ctx) return;
+    if (!this.masterGain) this.initMasterGain();
+    if (!this.masterGain) return;
     const now = ctx.currentTime;
 
     // Frequencies for a rich, harmonic Tibetan singing bowl
@@ -119,6 +128,7 @@ export class AmbientAudioEngine {
   public applyAudioDucking() {
     if (this.isDucking || this.isMuted || !this.masterGain) return;
     const ctx = audioContextManager.getContext();
+    if (!ctx) return;
     this.isDucking = true;
 
     const normalVol = this.previousMasterVolume;
@@ -139,6 +149,7 @@ export class AmbientAudioEngine {
    */
   private startGenerator(channelId: string, gainNode: GainNode) {
     const ctx = audioContextManager.getContext();
+    if (!ctx) return;
 
     switch (channelId) {
       case 'rain': {
