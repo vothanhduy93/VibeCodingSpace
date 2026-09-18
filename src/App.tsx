@@ -81,7 +81,7 @@ export default function App() {
 
       {/* Top Bar (Auto-Fades out on 5s idle) */}
       <div
-        className={`transition-opacity duration-500 ${
+        className={`relative z-30 transition-opacity duration-500 ${
           isIdle && !isAnyPanelOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}
       >
