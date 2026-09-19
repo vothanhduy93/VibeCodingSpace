@@ -158,4 +158,41 @@ export interface TranslationSchema {
     completedAlert: string;
     breatheAlert: string;
   };
+  auth: {
+    signIn: string;
+    signUp: string;
+    welcomeBack: string;
+    subtitle: string;
+    guestModeActive: string;
+    guestModeDesc: string;
+    googleSignIn: string;
+    orMagicLink: string;
+    emailPlaceholder: string;
+    sendMagicLink: string;
+    magicLinkSent: string;
+    magicLinkSentDesc: string;
+    instantLoginButton: string;
+    signOut: string;
+    synced: string;
+    syncing: string;
+    syncNow: string;
+    offline: string;
+    loginSuccess: string;
+    logoutSuccess: string;
+    dataMerged: string;
+  };
+  analytics: {
+    title: string;
+    subtitle: string;
+    totalHours: string;
+    totalSessions: string;
+    streak: string;
+    days: string;
+    hours: string;
+    minutes: string;
+    heatmapTitle: string;
+    less: string;
+    more: string;
+    noData: string;
+  };
 }

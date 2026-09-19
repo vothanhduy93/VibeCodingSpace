@@ -1,14 +1,18 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { BackgroundCanvas, BackgroundPickerModal } from '@/components/background';
 import { PomodoroCenter } from '@/components/pomodoro';
 import { SoundMixerDrawer } from '@/components/mixer';
 import { TodoDrawer } from '@/components/todo';
 import { YouTubeAudioAnchor, YouTubePlayerPill, YouTubeMiniVideoCard } from '@/components/music';
 import { TopBarClock, FloatingDock, KeyboardShortcutsModal } from '@/components/dock';
+import { AuthModal } from '@/components/auth';
+import { FocusHeatmapModal } from '@/components/analytics';
 import { useDailyRollover } from '@/hooks/useDailyRollover';
 import { usePageTitleSync } from '@/hooks/usePageTitleSync';
 import { useGlobalHotkeys } from '@/hooks/useGlobalHotkeys';
 import { useAutoIdleHide } from '@/hooks/useAutoIdleHide';
+import { useAuthStore } from '@/stores/useAuthStore';
+import { syncEngine } from '@/services/syncEngine';
 
 export default function App() {
   // Drawers & Modals state
@@ -16,8 +20,31 @@ export default function App() {
   const [isTodoOpen, setIsTodoOpen] = useState(false);
   const [isWallpaperOpen, setIsWallpaperOpen] = useState(false);
   const [isShortcutsOpen, setIsShortcutsOpen] = useState(false);
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const [isAnalyticsOpen, setIsAnalyticsOpen] = useState(false);
 
-  const isAnyPanelOpen = isSoundMixerOpen || isTodoOpen || isWallpaperOpen || isShortcutsOpen;
+  const isAnyPanelOpen =
+    isSoundMixerOpen ||
+    isTodoOpen ||
+    isWallpaperOpen ||
+    isShortcutsOpen ||
+    isAuthOpen ||
+    isAnalyticsOpen;
+
+  // Cloud Sync & Auth initialization on app start
+  const { checkAuth } = useAuthStore();
+  useEffect(() => {
+    checkAuth().then((isAuthed) => {
+      if (isAuthed) {
+        syncEngine.pull();
+        syncEngine.startPeriodicSync();
+      }
+    });
+
+    return () => {
+      syncEngine.stopPeriodicSync();
+    };
+  }, [checkAuth]);
 
   // 1. Timezone Daily Rollover Watchdog
   useDailyRollover();
@@ -55,6 +82,8 @@ export default function App() {
     setIsTodoOpen(false);
     setIsWallpaperOpen(false);
     setIsShortcutsOpen(false);
+    setIsAuthOpen(false);
+    setIsAnalyticsOpen(false);
   }, []);
 
   // 4. Global Hotkeys Hook (Space, M, F, T, S, P, R, ?, Esc)
@@ -89,6 +118,8 @@ export default function App() {
           onOpenShortcuts={() => setIsShortcutsOpen(true)}
           isFullscreen={isFullscreen}
           onToggleFullscreen={toggleFullscreen}
+          onOpenAuth={() => setIsAuthOpen(true)}
+          onOpenAnalytics={() => setIsAnalyticsOpen(true)}
         />
       </div>
 
@@ -145,6 +176,16 @@ export default function App() {
       <KeyboardShortcutsModal
         isOpen={isShortcutsOpen}
         onClose={() => setIsShortcutsOpen(false)}
+      />
+
+      <AuthModal
+        isOpen={isAuthOpen}
+        onClose={() => setIsAuthOpen(false)}
+      />
+
+      <FocusHeatmapModal
+        isOpen={isAnalyticsOpen}
+        onClose={() => setIsAnalyticsOpen(false)}
       />
     </div>
   );
