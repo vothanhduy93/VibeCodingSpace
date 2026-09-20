@@ -38,6 +38,7 @@ jobs:
       - name: 📦 Setup Backend, Prisma & Execute Backend Tests
         run: |
           cd backend
+          cp .env.example .env
           npm ci
           npx prisma generate
           npx prisma db push
